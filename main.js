@@ -73,19 +73,20 @@ async function createListOfPokemons() {
 		// pokemonTypeColor.classList.add('pokemon-color-type')
 		// li.style.backgroundColor = getTypeColor(pokemonData.types[0]);
 		
-		imgContainer.appendChild(img);
+		imgContainer.appendChild(img)
 		imgContainer.appendChild(img)
 		li.appendChild(imgContainer)
 		// li.appendChild(pokemonTypeColor)
 		
 		ul.appendChild(li)
 		li.appendChild(addButton)
+		
 		addButton.addEventListener('click', () => {
 			if (!addedPokemons.includes(pokemonData)) {
-				addedPokemons.push(pokemonData);
-				console.log(`Added ${pokemonData.name} to the team!`);
+				addedPokemons.push(pokemonData)
+				console.log(`Added ${pokemonData.name} to the team`)
 			} else {
-				console.log(`${pokemonData.name} is already in the team!`);
+				console.log(`${pokemonData.name} is already in the team`)
 			}
 		});
 	});
@@ -95,18 +96,18 @@ async function createListOfPokemons() {
 
 	searchPokemonInput.addEventListener('input', function () {
 
-        const filter = searchPokemonInput.value.toUpperCase();
-        const lis = ul.getElementsByTagName('li');
+        const filter = searchPokemonInput.value.toUpperCase()
+        const lis = ul.getElementsByTagName('li')
 
         for (let i = 0; i < lis.length; i++) {
             const txtValue = lis[i].textContent || lis[i].innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                lis[i].style.display = "";
+                lis[i].style.display = ""
             } else {
-                lis[i].style.display = "none";
+                lis[i].style.display = "none"
             }
         }
-    });
+    })
 }
 
-createListOfPokemons();
+createListOfPokemons()
