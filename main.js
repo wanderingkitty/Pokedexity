@@ -4,6 +4,7 @@ import { colors } from './colors.js';
 const pokemonListContainer = document.querySelector('.pokemon-container');
 let pokemonTypeColor
 const searchPokemonInput = document.querySelector('#site-search')
+const addedPokemons = []
 
 async function fetchPokemonData(url) {
 	try {
