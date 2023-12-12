@@ -55,7 +55,7 @@ async function createListOfPokemons() {
 	pokemonDataArray.forEach((pokemonData) => {
 		const li = document.createElement('li');
 		li.textContent = `${pokemonData.name.toUpperCase()} - Types: ${pokemonData.types.join(', ')}`
-		li.className = 'pokemon-list-container pokemon-name'
+		li.className = 'pokemon-list-container pokemon-item'
 
 		
 		
