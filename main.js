@@ -1,11 +1,13 @@
 import { sample } from './ajax.js';
 // import { colors } from './colors.js';
-
-const pokemonListContainer = document.querySelector('.pokemon-container');
+export const pokemonListContainer = document.querySelector('.pokemon-container');
 const pokemonsName = document.querySelector('.pokemon-name')
 // let pokemonTypeColor
 const searchPokemonInput = document.querySelector('#site-search')
-const addedPokemons = []
+export const addedPokemons = []
+const teamContainer = document.querySelector('.team-container')
+teamContainer.classList.add('hide')
+
 
 async function fetchPokemonData(url) {
 	try {
@@ -26,7 +28,7 @@ function shufflePokemons(array) {
 	}
 }
 
-const addPokemonToTeamBtn = document.querySelector('.add-btn')
+export const addPokemonToTeamBtn = document.querySelector('.add-btn')
 addPokemonToTeamBtn.style.display = 'none'
 
 // function getTypeColor(type) {
@@ -54,10 +56,8 @@ async function createListOfPokemons() {
 	
 	pokemonDataArray.forEach((pokemonData) => {
 		const li = document.createElement('li');
-		li.textContent = `${pokemonData.name.toUpperCase()} - Types: ${pokemonData.types.join(', ')}`
+		li.textContent = `${pokemonData.name.toUpperCase()} - ${pokemonData.types.join(', ')}`
 		li.className = 'pokemon-list-container pokemon-item'
-
-		
 		
 		const addButton = document.createElement('button')
 		addButton.className = 'add-btn'
@@ -68,16 +68,11 @@ async function createListOfPokemons() {
 		const img = document.createElement('img')
 		img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png`;
 		img.alt = pokemonData.name;
-		
-		// pokemonTypeColor = document.createElement('div')
-		// pokemonTypeColor.classList.add('pokemon-color-type')
-		// li.style.backgroundColor = getTypeColor(pokemonData.types[0]);
-		
+	
 		imgContainer.appendChild(img)
 		imgContainer.appendChild(img)
 		li.appendChild(imgContainer)
-		// li.appendChild(pokemonTypeColor)
-		
+
 		ul.appendChild(li)
 		li.appendChild(addButton)
 		
