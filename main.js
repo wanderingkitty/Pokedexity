@@ -5,13 +5,26 @@ const pokemonsName = document.querySelector('.pokemon-name')
 // let pokemonTypeColor
 const searchPokemonInput = document.querySelector('#site-search')
 export const addedPokemons = []
-const teamContainer = document.querySelector('.team-container')
-teamContainer.classList.add('hide')
+export const teamContainer = document.querySelector('.team-container')
+// teamContainer.classList.add('hide')
+// teamContainer.classList.remove('show')
+export const firstScreen = document.querySelector('#first-screen')
+export const secondScreen = document.querySelector('#second-screen')
 
+export function hideSecondScreen() {
+    console.log('Hiding second screen');
+    firstScreen.classList.remove('hide');
+    firstScreen.classList.add('show');
+
+    secondScreen.classList.remove('show');
+    secondScreen.classList.add('hide');
+}
+
+hideSecondScreen();
 
 async function fetchPokemonData(url) {
 	try {
-		const response = await fetch(url);
+		const response = await fetch(url);	
 		const data = await response.json();
 		return data;
 	} catch (error) {
@@ -30,10 +43,6 @@ function shufflePokemons(array) {
 
 export const addPokemonToTeamBtn = document.querySelector('.add-btn')
 addPokemonToTeamBtn.style.display = 'none'
-
-// function getTypeColor(type) {
-// 	return colors[type] || '#CCCCCC';
-// }
 
 async function createListOfPokemons() {
 	const listOfPokemons = sample.results
