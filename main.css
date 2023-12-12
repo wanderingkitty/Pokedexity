@@ -66,7 +66,8 @@ input {
 	display: flex;
 }
 .pokemon-list-container  {
-    background-color: #A69F98;
+	background-color: #972929; 
+    color:#D9D9D9;
     border-radius: 14px;
     width: 300px;
     height: 160px;
@@ -109,13 +110,6 @@ input {
 	padding-left: 2.5em;
 	align-self: center;
 }
-.pokemon-item {
-	grid-column: 2/span 1;
-    background-color: #972929; 
-    color:#D9D9D9;
-	
-}
-
 .show {
 	display: block;
 }

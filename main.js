@@ -66,7 +66,7 @@ async function createListOfPokemons() {
 	pokemonDataArray.forEach((pokemonData) => {
 		const li = document.createElement('li');
 		li.textContent = `${pokemonData.name.toUpperCase()} - ${pokemonData.types.join(', ')}`
-		li.className = 'pokemon-list-container pokemon-item'
+		li.className = 'pokemon-list-container'
 		
 		const addButton = document.createElement('button')
 		addButton.className = 'add-btn'
@@ -84,15 +84,38 @@ async function createListOfPokemons() {
 
 		ul.appendChild(li)
 		li.appendChild(addButton)
-		
-		addButton.addEventListener('click', () => {
-			if (!addedPokemons.includes(pokemonData)) {
-				addedPokemons.push(pokemonData)
-				console.log(`Added ${pokemonData.name} to the team`)
-			} else {
-				console.log(`${pokemonData.name} is already in the team`)
-			}
-		});
+
+
+const teamList = document.querySelector('.team-list');
+
+function updateTeamList() {
+  
+    teamList.innerHTML = '';
+
+    addedPokemons.forEach((pokemonData) => {
+        const li = document.createElement('li');
+        li.textContent = `${pokemonData.name.toUpperCase()} - ${pokemonData.types.join(', ')}`
+        li.className = 'pokemon-list-container';
+
+        const img = document.createElement('img');
+        img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png`;
+        img.alt = pokemonData.name;
+        li.appendChild(img);
+
+        // Add the list item to the team list
+        teamList.appendChild(li);
+    });
+}
+
+addButton.addEventListener('click', () => {
+    if (!addedPokemons.includes(pokemonData)) {
+        addedPokemons.push(pokemonData);
+        console.log(`Added ${pokemonData.name} to the team`);
+        updateTeamList(); // Call the function to update the team list
+    } else {
+        console.log(`${pokemonData.name} is already in the team`);
+    }
+});
 	});
 	
 	ul.style.listStyleType = 'none'
