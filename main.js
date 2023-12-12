@@ -3,7 +3,7 @@ import { sample } from './ajax.js';
 export const pokemonListContainer = document.querySelector('.pokemon-container');
 const pokemonsName = document.querySelector('.pokemon-name')
 // let pokemonTypeColor
-const searchPokemonInput = document.querySelector('#site-search')
+export const searchPokemonInput = document.querySelector('#site-search')
 export const addedPokemons = []
 export const teamContainer = document.querySelector('.team-container')
 // teamContainer.classList.add('hide')
@@ -89,7 +89,6 @@ async function createListOfPokemons() {
 const teamList = document.querySelector('.team-list');
 
 function updateTeamList() {
-  
     teamList.innerHTML = '';
 
     addedPokemons.forEach((pokemonData) => {
@@ -101,19 +100,26 @@ function updateTeamList() {
         img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png`;
         img.alt = pokemonData.name;
         li.appendChild(img);
-
-        // Add the list item to the team list
         teamList.appendChild(li);
     });
 }
+		const maxTeamMembers = 3
+		let	popUpMessege = document.createElement('div')
+		popUpMessege.innerText = 'Team is full.'
+		popUpMessege.classList.add('pop-up-window')
 
 addButton.addEventListener('click', () => {
+	if(addedPokemons.length < maxTeamMembers)
     if (!addedPokemons.includes(pokemonData)) {
         addedPokemons.push(pokemonData);
         console.log(`Added ${pokemonData.name} to the team`);
-        updateTeamList(); // Call the function to update the team list
+        updateTeamList()
     } else {
         console.log(`${pokemonData.name} is already in the team`);
+    }
+	else {
+        console.log('Cannot add more members. Team is full.');
+		document.body.appendChild(popUpMessege);
     }
 });
 	});

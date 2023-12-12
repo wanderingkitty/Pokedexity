@@ -91,7 +91,7 @@ input {
 }
 
 .pokemon-list-container > .img-container img{
-	width: 145px;
+	width: 125px;
 	position: absolute;
 	transform:translateX(-3em) translateY(-3.5em);
 }
@@ -123,4 +123,28 @@ input {
 	flex-direction: column;
 	color:#D9D9D9;
 	text-align: center;
+}
+
+.pop-up-window {
+	background-color:#D9D9D9;
+	border:1px solid #2e2e2e;
+	color:#2e2e2e;
+	width: 8em;
+}
+
+.remove-btn, .go-back-btn{
+	background:none;
+	border: none;
+	cursor: pointer;
+}
+
+.remove-btn img {
+	width: 50px;
+	padding-left: 2.5em;
+	align-self: center;
+}
+
+.go-back-btn img{
+	width: 50px;
+	align-self: center;
 }
