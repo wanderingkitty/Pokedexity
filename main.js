@@ -18,6 +18,7 @@ export function hideSecondScreen() {
 
 hideSecondScreen();
 
+//Function to get pokemon data
 async function fetchPokemonData(url) {
 	try {
 		const response = await fetch(url);	
@@ -29,6 +30,7 @@ async function fetchPokemonData(url) {
 	}
 }
 
+//Function to randomise pokemons 
 function shufflePokemons(array) {
 	for (let i = array.length - 1; i > 0; i--) {
 		const random = Math.floor(Math.random() * (i + 1));
@@ -40,16 +42,14 @@ function shufflePokemons(array) {
 export const addPokemonToTeamBtn = document.querySelector('.add-btn')
 addPokemonToTeamBtn.style.display = 'none'
 
+//Function to make a list from a fetched data
 async function createListOfPokemons() {
 	const listOfPokemons = sample.results
 	
 	shufflePokemons(listOfPokemons);
 	
 	const ul = document.createElement('ul');
-	// ul.className = 'pokemon-list-container'
 
-
-	
 	const pokemonDataPromises = listOfPokemons.map(async (pokemon) => {
 		const data = await fetchPokemonData(pokemon.url);
 		return {
@@ -60,7 +60,8 @@ async function createListOfPokemons() {
 	});
 	
 	const pokemonDataArray = await Promise.all(pokemonDataPromises);
-	
+
+//Foreach function to append and create pokemons as a list of them
 	pokemonDataArray.forEach((pokemonData) => {
 		const li = document.createElement('li');
 		li.className = 'pokemon-list-container';
@@ -90,26 +91,38 @@ async function createListOfPokemons() {
 
 const teamList = document.querySelector('.team-list');
 
+//Function to get added pokemons on a separate list
 function updateTeamList() {
     teamList.innerHTML = '';
 
     addedPokemons.forEach((pokemonData) => {
         const li = document.createElement('li');
-        li.textContent = `${pokemonData.name.toUpperCase()} - ${pokemonData.types.join(', ')}`
         li.className = 'pokemon-list-container';
+
+        const imgContainer = document.createElement('div');
+        imgContainer.className = 'img-container';
 
         const img = document.createElement('img');
         img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png`;
         img.alt = pokemonData.name;
-        li.appendChild(img);
+
+        imgContainer.appendChild(img);
+        li.appendChild(imgContainer);
+
+        const textContent = document.createElement('div');
+        textContent.textContent = `${pokemonData.name.toUpperCase()} - ${pokemonData.types.join(', ')}`;
+        li.appendChild(textContent);
+
         teamList.appendChild(li);
     });
 }
+
 		const maxTeamMembers = 3
 		let	popUpMessege = document.createElement('div')
 		popUpMessege.innerText = 'Team is full.'
 		popUpMessege.classList.add('pop-up-window')
 
+//Button to add pokemons to a list
 addButton.addEventListener('click', () => {
 	if(addedPokemons.length < maxTeamMembers)
     if (!addedPokemons.includes(pokemonData)) {
@@ -129,6 +142,8 @@ addButton.addEventListener('click', () => {
 	ul.style.listStyleType = 'none'
 	pokemonListContainer.appendChild(ul)
 
+
+//Input to search pokemons by their names and types
 	searchPokemonInput.addEventListener('input', function () {
 
         const filter = searchPokemonInput.value.toUpperCase()
