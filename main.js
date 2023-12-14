@@ -86,7 +86,6 @@ async function createListOfPokemons() {
 		li.appendChild(addButton);
 	
 		ul.appendChild(li);
-		li.appendChild(addButton)
 	
 
 const teamList = document.querySelector('.team-list');
@@ -108,10 +107,15 @@ function updateTeamList() {
 
         imgContainer.appendChild(img);
         li.appendChild(imgContainer);
-
+		
         const textContent = document.createElement('div');
         textContent.textContent = `${pokemonData.name.toUpperCase()} - ${pokemonData.types.join(', ')}`;
         li.appendChild(textContent);
+
+		const removeButton = document.createElement('button');
+		removeButton.className = 'remove-btn';
+		removeButton.innerHTML = removePokemonToTeamBtn.innerHTML;
+		li.appendChild(removeButton)
 
         teamList.appendChild(li);
     });
@@ -142,6 +146,22 @@ addButton.addEventListener('click', () => {
 	ul.style.listStyleType = 'none'
 	pokemonListContainer.appendChild(ul)
 
+
+//Button to remove pokemons from a list
+const removePokemonToTeamBtn = document.querySelector('.remove-btn');
+removePokemonToTeamBtn.style.display = 'none'
+
+removePokemonToTeamBtn.addEventListener('click', () => {
+    const indexToRemove = addedPokemons.findIndex((pokemon) => pokemon === pokemonData);
+
+    if (indexToRemove !== -1) {
+        addedPokemons.splice(indexToRemove, 1);
+        console.log(`Removed ${pokemonData.name} from the team`);
+        updateTeamList();
+    } else {
+        console.log(`${pokemonData.name} is not in the team`);
+    }
+});
 
 //Input to search pokemons by their names and types
 	searchPokemonInput.addEventListener('input', function () {

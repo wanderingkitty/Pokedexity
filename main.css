@@ -63,7 +63,7 @@ input {
 	box-sizing: border-box;
 	justify-content: center;
 	align-items: center;
-	margin: 0.5em;
+	margin: 0.2em;
 	margin-bottom: 1em;
 	display: flex;
 }
@@ -103,7 +103,7 @@ ul > img{
 	grid-column: 1;
 }
 
-.add-btn  {
+.add-btn {
 	background:none;
 	border:none;
 	cursor: pointer;
@@ -117,9 +117,7 @@ ul > img{
 	align-self: center;
 	grid-column: 3;
 	margin: auto;
-
 } 
-
 .show {
 	display: block;
 }
@@ -140,11 +138,11 @@ ul > img{
 	border: none;
 	cursor: pointer;
 }
-
 .remove-btn img {
 	width: 50px;
-	padding-left: 2.5em;
 	align-self: center;
+	margin: auto;
+	grid-column: 3;
 }
 
 .go-back-btn img{
@@ -162,5 +160,13 @@ ul > img{
 
 #poke-list {
 	display: flex;
+	justify-content: center;
+	align-self:center;
 	margin: auto;
+}
+
+#second-screen li {
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column: 2/span 1;
+    color:#D9D9D9;
 }
