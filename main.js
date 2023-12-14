@@ -1,13 +1,9 @@
 import { sample } from './ajax.js';
-// import { colors } from './colors.js';
 export const pokemonListContainer = document.querySelector('.pokemon-container');
 const pokemonsName = document.querySelector('.pokemon-name')
-// let pokemonTypeColor
 export const searchPokemonInput = document.querySelector('#site-search')
 export const addedPokemons = []
 export const teamContainer = document.querySelector('.team-container')
-// teamContainer.classList.add('hide')
-// teamContainer.classList.remove('show')
 export const firstScreen = document.querySelector('#first-screen')
 export const secondScreen = document.querySelector('#second-screen')
 
@@ -35,8 +31,8 @@ async function fetchPokemonData(url) {
 
 function shufflePokemons(array) {
 	for (let i = array.length - 1; i > 0; i--) {
-		const j = Math.floor(Math.random() * (i + 1));
-		[array[i], array[j]] = [array[j], array[i]];
+		const random = Math.floor(Math.random() * (i + 1));
+		[array[i], array[random]] = [array[random], array[i]];
 		
 	}
 }
@@ -50,7 +46,9 @@ async function createListOfPokemons() {
 	shufflePokemons(listOfPokemons);
 	
 	const ul = document.createElement('ul');
-	ul.classList.add('pokemon-name')
+	// ul.className = 'pokemon-list-container'
+
+
 	
 	const pokemonDataPromises = listOfPokemons.map(async (pokemon) => {
 		const data = await fetchPokemonData(pokemon.url);
@@ -65,26 +63,30 @@ async function createListOfPokemons() {
 	
 	pokemonDataArray.forEach((pokemonData) => {
 		const li = document.createElement('li');
-		li.textContent = `${pokemonData.name.toUpperCase()} - ${pokemonData.types.join(', ')}`
-		li.className = 'pokemon-list-container'
-		
-		const addButton = document.createElement('button')
-		addButton.className = 'add-btn'
-		addButton.innerHTML = addPokemonToTeamBtn.innerHTML;
+		li.className = 'pokemon-list-container';
 	
-		const imgContainer = document.createElement('div')
-		imgContainer.className = 'img-container'
-		const img = document.createElement('img')
+		const imgContainer = document.createElement('div');
+		imgContainer.className = 'img-container';
+	
+		const img = document.createElement('img');
 		img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png`;
 		img.alt = pokemonData.name;
 	
-		imgContainer.appendChild(img)
-		imgContainer.appendChild(img)
-		li.appendChild(imgContainer)
-
-		ul.appendChild(li)
+		imgContainer.appendChild(img);
+		li.appendChild(imgContainer);
+	
+		const textContent = document.createElement('div');
+		textContent.textContent = `${pokemonData.name.toUpperCase()} - ${pokemonData.types.join(', ')}`;
+		li.appendChild(textContent);
+	
+		const addButton = document.createElement('button');
+		addButton.className = 'add-btn';
+		addButton.innerHTML = addPokemonToTeamBtn.innerHTML;
+		li.appendChild(addButton);
+	
+		ul.appendChild(li);
 		li.appendChild(addButton)
-
+	
 
 const teamList = document.querySelector('.team-list');
 
