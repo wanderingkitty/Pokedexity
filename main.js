@@ -18,6 +18,7 @@ export function hideSecondScreen() {
 
 hideSecondScreen();
 
+
 //Function to get pokemon data
 async function fetchPokemonData(url) {
 	try {
@@ -96,7 +97,7 @@ function updateTeamList() {
 
     addedPokemons.forEach((pokemonData) => {
         const li = document.createElement('li');
-        li.className = 'pokemon-list-container';
+        li.className = 'pokemon-list-container card';
 
         const imgContainer = document.createElement('div');
         imgContainer.className = 'img-container';

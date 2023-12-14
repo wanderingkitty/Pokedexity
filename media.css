@@ -1,0 +1,38 @@
+/* ... Your existing styles ... */
+
+@media screen and (min-width: 600px) {
+	.pokemon-list-container {
+	  height: 320px;
+	  display: flex;
+	  flex-direction: column;
+	  align-items:center;
+	  justify-content: center;
+	}
+  
+	.card {
+	  width: 200px;
+	  margin: 0.5em; 
+	}
+	ul {
+	  flex-direction: row;
+	  flex-wrap: wrap;
+	  justify-content: space-around;
+
+
+	}
+  
+	.pop-up-window {
+	  width: auto;
+	}
+
+	.add-btn {
+		margin-top: 1em;
+	}
+
+	img {
+		margin-top: 1.5em;
+		width: 150px;
+	}
+
+  }
+  

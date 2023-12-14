@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- <title>Pokedexity</title> -->
 	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="media.css">
 	<script type="module" src="data.js"></script>
 	<script type="module" src="main.js"></script>
 	<script type="module" src="team.js"></script>
@@ -16,9 +17,7 @@
 <body>
 	<main>
 		<header>
-			<button class="logo-btn">
-				<img src="/img/Group 6.png" alt="">
-			</button>
+				<img class="logo" src="/img/Group 6.png" alt="">
 			<label for="site-search"></label>
 			<input type="search" id="site-search" placeholder="Search pokémons" name="q" />
 		</header>
@@ -38,16 +37,22 @@
 		</section>
 		<section id="second-screen">
 			<div class="team-container">
-			<h2>MY TEAM</h2>
+			<div class="go-back-container">
+				<button class="go-back-btn">
+					<img src="/img/Group 3.png" alt="">
+				</button>
+				<h2>MY TEAM</h2>
+			</div>
 			<ul class="team-list"></ul>
 			<button class="remove-btn">
 				<img src="/img/Group 2 (1).png" alt="">
 			</button>
+			<button class="reserve-btn">
+				<img src="/img/Group 14.png" alt="">
+			</button>
 			<h2>RESERVED POKÉMONS</h2>
 		</div>
-		<button class="go-back-btn">
-			<img src="/img/Group 3.png" alt="">
-		</button>
+		
 		</section>
 	</main>
 </body>
