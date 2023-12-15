@@ -1,38 +1,46 @@
 /* ... Your existing styles ... */
 
 @media screen and (min-width: 600px) {
+
+	body {
+        background-size: contain;
+        background-position: top;
+    }
+
+    body::before {
+        filter: blur(15px); /* Adjust the blur effect for small screens */
+    }
 	.pokemon-list-container {
-	  height: 320px;
-	  display: flex;
-	  flex-direction: column;
-	  align-items:center;
-	  justify-content: center;
+		height: 320px;
+		display: flex;
+		flex-direction: column;
+		align-items:center;
+		justify-content: center;
 	}
-  
+	
 	.card {
-	  width: 200px;
-	  margin: 0.5em; 
+		width: 200px;
+		margin: 0.5em; 
 	}
 	ul {
-	  flex-direction: row;
-	  flex-wrap: wrap;
-	  justify-content: space-around;
-
-
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		
+		
 	}
-  
+	
 	.pop-up-window {
-	  width: auto;
+		width: auto;
 	}
-
+	
 	.add-btn {
 		margin-top: 1em;
 	}
-
+	
 	img {
 		margin-top: 1.5em;
 		width: 150px;
 	}
-
-  }
-  
+	
+}
