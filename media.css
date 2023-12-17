@@ -1,15 +1,6 @@
-/* ... Your existing styles ... */
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 300px) {
 
-	body {
-        background-size: contain;
-        background-position: top;
-    }
-
-    body::before {
-        filter: blur(15px); /* Adjust the blur effect for small screens */
-    }
 	.pokemon-list-container {
 		height: 320px;
 		display: flex;
@@ -17,17 +8,10 @@
 		align-items:center;
 		justify-content: center;
 	}
-	
-	.card {
-		width: 200px;
-		margin: 0.5em; 
-	}
-	ul {
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: space-around;
-		
-		
+
+	.pokemon-container {
+		display: flex;
+		flex-direction: column;
 	}
 	
 	.pop-up-window {
@@ -41,6 +25,48 @@
 	img {
 		margin-top: 1.5em;
 		width: 150px;
+	}
+
+	#poke-list {
+	grid-column: 2;
+	}
+	
+}
+
+
+@media screen and (min-width: 600px) {
+
+	.pokemon-list-container {
+		height: 320px;
+		display: flex;
+		flex-direction: column;
+		align-items:center;
+		justify-content: center;
+	}
+
+	.pokemon-container {
+		display: grid;
+		justify-content: center;
+		align-items: center;
+		grid-template-columns: repeat(3,0.2fr);
+	}
+
+	
+	.pop-up-window {
+		width: auto;
+	}
+	
+	.add-btn {
+		margin-top: 1em;
+	}
+	
+	img {
+		margin-top: 1.5em;
+		width: 150px;
+	}
+
+	#poke-list {
+	grid-column: 2;
 	}
 	
 }

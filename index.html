@@ -8,8 +8,6 @@
 	<link rel="stylesheet" href="main.css">
 	<link rel="stylesheet" href="media.css">
 	<script type="module" src="data.js"></script>
-	<script type="module" src="main.js"></script>
-	<script type="module" src="team.js"></script>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
@@ -21,9 +19,9 @@
 			<label for="site-search"></label>
 			<input type="search" id="site-search" placeholder="Search pokémons" name="q" />
 		</header>
-		<section class="pokemon-container" id="first-screen">
+		<section class="first-screen-container" id="first-screen">
+			<div class="pokemon-container">
 			<div class="img-container"></div>
-			<span class="pokemon-name"></span>
 			<h1>POKÉDEX TEAM MATE</h1>
 			<div id="poke-list">
 				<button class="team-btn">MY TEAM</button>
@@ -31,24 +29,24 @@
 			</div>
 			<div>
 				<button class="add-btn">
-					<img src="/img/Group 2 copy.png" alt="">
+					ADD
 				</button>
 			</div>
+		</div>
 		</section>
 		<section id="second-screen">
 			<div class="team-container">
 			<div class="go-back-container">
 				<button class="go-back-btn">
-					<img src="/img/Group 3.png" alt="">
+					GO BACK
 				</button>
 				<h2>MY TEAM</h2>
 			</div>
 			<ul class="team-list"></ul>
 			<button class="remove-btn">
-				<img src="/img/Group 2 (1).png" alt="">
+				REMOVE
 			</button>
-			<button class="reserve-btn">
-				<img src="/img/Group 14.png" alt="">
+			<button class="reserve-btn">RESERVE
 			</button>
 			<h2>RESERVED POKÉMONS</h2>
 		</div>

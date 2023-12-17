@@ -1,8 +1,7 @@
-import { pokemonListContainer, addedPokemons, addPokemonToTeamBtn, teamContainer, hideSecondScreen, secondScreen, searchPokemonInput } from './main.js';
-
 const goToMainScreenBtn = document.querySelector('.go-back-btn');
 const teamList = document.querySelector('.team-list');
 const teamScreenBtn = document.querySelector('.team-btn');
+export const firstScreen = document.querySelector('#first-screen')
 
 
 teamScreenBtn.addEventListener('click', () => {
