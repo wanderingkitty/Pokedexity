@@ -1,6 +1,9 @@
 import { getPokemon } from "./data.js";
 import { firstScreen } from "./team.js";
 export const secondScreen = document.querySelector('#second-screen')
+const pokemonListUrl = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0'
+const displayLimit = 20; 
+export const searchPokemonInput = document.querySelector('#site-search')
 
 //Function to hide second view screen
 export function hideSecondScreen() {
@@ -11,16 +14,7 @@ export function hideSecondScreen() {
 	secondScreen.classList.remove('show');
 	secondScreen.classList.add('hide');
 }
-
 hideSecondScreen();
-
-
-const pokemonListUrl = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0'
-const displayLimit = 20; 
-const addButton = document.querySelector('.add-btn');
-const reserveButton = document.querySelector('.reserve-btn');
-
-
 
 //Function to shufflr and get random pokemons, each time the page reloads
 function shuffleArray(array) {
@@ -52,16 +46,32 @@ export async function getPokemonDetails () {
 			const pokemonName = document.createElement('div');
 			pokemonName.textContent = detailedPokemon.name.toUpperCase();
 
-			addButton.classList.add('add-btn')
-			reserveButton.classList.add('.reserve-btn')
+			const buttonContainer = document.createElement('div');
+			buttonContainer.className = 'button-container';
+			pokemonName.classList.add('pokemonName'); 
 
+			const addButton = document.createElement('button');
+			addButton.className = 'add-btn';
+			const addImage = document.createElement('img');
+			addImage.src = '/img/Group 2 copy.png'; 
+			addButton.appendChild(addImage);
+
+			const reserveButton = document.createElement('button')
+			reserveButton.className = 'reserve-btn'
+			const resderveImage = document.createElement('img');
+			resderveImage.src = '/img/Group 14 (1).png'
+			reserveButton.appendChild(resderveImage)
+			
 			pokemonCard.appendChild(addButton); 
 			pokemonCard.appendChild(reserveButton); 
 			pokemonCard.appendChild(img);
 			pokemonCard.appendChild(pokemonName);
 			pokemonContainer.appendChild(pokemonCard);
-		
+			buttonContainer.appendChild(addButton);
+    		buttonContainer.appendChild(reserveButton);
+    		pokemonCard.appendChild(buttonContainer);
 		}
+		
 	} catch (error) {
 		console.log('Error', error.message);
 	}
