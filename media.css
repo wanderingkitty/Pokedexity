@@ -29,6 +29,7 @@
 	#poke-list {
 		grid-column: 2;
 	}
+
 	
 }
 
@@ -73,5 +74,10 @@
 		justify-content: center;
 		align-items: center;
 	}
+
+	.team-container > * {
+        flex-direction: row; /* Aligns children horizontally */
+        /* Other styles if needed */
+    }
 	
 }

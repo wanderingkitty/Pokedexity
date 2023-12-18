@@ -129,12 +129,12 @@ input {
 .go-back-btn {
 	margin-right: 1em;
 }
-.team-container {
-	display: flex;
-	flex-direction: column;
-	color:#D9D9D9;
-	justify-content: center;
-	align-items:center;
+.team-container > * {
+    display: flex;
+    flex-direction: column; /* Stacks children vertically */
+    color: #D9D9D9;
+    justify-content: center;
+    align-items: center;
 }
 
 #poke-list {
