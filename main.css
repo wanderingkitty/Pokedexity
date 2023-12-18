@@ -218,7 +218,7 @@ input {
 @keyframes neonBlink {
     0%, 100% {
         color:#D9D9D9;
-        text-shadow: 0 0 5px [Your_Current_Color], 0 0 10px #D9D9D9; /
+        text-shadow: 0 0 5px #D9D9D9, 0 0 10px #D9D9D9; 
     }
     50% {
         color: #FF6EC7; 
@@ -228,6 +228,12 @@ input {
 
 h1 {
     animation: neonBlink 1.5s ease-in-out infinite;
+}
+
+h2 {
+	font-size: 2em;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
 }
 
 .pokemon-name {
@@ -259,4 +265,34 @@ h1 {
 	justify-content: center;
 	align-items: center;
 	margin: 0 auto;
+  }
+
+  #second-screen{
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+  }
+
+  .go-back-btn {
+	background-color: #FFDC5E;
+	color:#2e2e2e;
+	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+	border:none;
+	border-radius: 10px;
+	width: 165px;
+	height: 50px;
+	flex-shrink: 0;
+	font-weight: 800;
+	font-size: 1.8em;
+	cursor: pointer;
+	box-sizing: border-box;
+	justify-content: center;
+	align-items: center;
+	margin: 0.2em;
+	margin-bottom: 0.2em;
+	margin-top: 0.2em;
+  }
+
+  .go-back-btn:hover {
+	background-color:#D9D9D9;	
   }

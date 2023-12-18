@@ -44,7 +44,7 @@ function searchPokemon() {
 		const pokemonContainer = document.querySelector('.pokemon-container');
 		pokemonContainer.innerHTML = '';
 		
-			pokemonList.forEach(async (pokemon) => {
+		pokemonList.forEach(async (pokemon) => {
 			const pokemonData = await fetch(pokemon.url);
 			const detailedPokemon = await pokemonData.json();
 			
@@ -90,7 +90,6 @@ function searchPokemon() {
 			pokemonCard.appendChild(pokemonName);
 			pokemonCard.appendChild(buttonContainer);
 			pokemonContainer.appendChild(pokemonCard);
-			
 			//Gettingpokemon types
 			const pokemonTypes = document.createElement('div');
 			pokemonTypes.className = 'pokemon-types';
@@ -109,22 +108,65 @@ function searchPokemon() {
 			const teamList = document.querySelector('.team-list');
 			//Function to get added pokemons on a separate list
 			function updateTeamList() {
-				teamList.innerHTML = ''; 
+				const teamList = document.querySelector('.team-list');
+				teamList.innerHTML = '';  
 				
 				myTeam.forEach((pokemonData) => {
-					const teamPokemonCard = document.createElement('div');
-					teamPokemonCard.className = 'team-pokemon-card';
+			
+					const teamPokemonCard = document.createElement('div');	
+					teamPokemonCard.className = 'pokemon-list-container';
 					
 					const teamPokemonName = document.createElement('div');
 					teamPokemonName.textContent = pokemonData.name.toUpperCase();
 					teamPokemonName.className = 'pokemon-name';
 					
+					const img = document.createElement('img');
+					img.src = pokemonData.sprites.other.dream_world.front_default ||
+					pokemonData.sprites.other['official-artwork'].front_default ||
+					pokemonData.sprites.front_default ||
+					'/img/poketext.png';
+					img.className = 'pokemon-image'; 
+					
+					// Pokemon Types
+					const pokemonTypes = document.createElement('div');
+					pokemonTypes.className = 'pokemon-types';
+					pokemonData.types.forEach((typeSlot) => {
+						const type = document.createElement('span');
+						type.textContent = typeSlot.type.name;
+						type.style.backgroundColor = colors[typeSlot.type.name] || '#CCCCCC';
+						type.className = 'pokemon-type';
+						pokemonTypes.appendChild(type);
+					});
+					const buttonContainer = document.createElement('div');
+					buttonContainer.className = 'button-container';
+			
+					// Reserve Button
+					const reserveButton = document.createElement('button');
+					reserveButton.className = 'reserve-btn';
+					const reserveImage = document.createElement('img');
+					reserveImage.src = '/img/Group 14 (1).png'; 
+					reserveButton.appendChild(reserveImage);
+			
+					buttonContainer.appendChild(reserveButton);
+			
+					teamPokemonCard.appendChild(buttonContainer);
+					
+					const removeButton = document.createElement('button');
+					removeButton.textContent = 'Remove';
+					removeButton.className = 'remove-btn';
+					removeButton.addEventListener('click', () => {
+						// Code to remove this Pokemon from the team
+					});
+					
+					teamPokemonCard.appendChild(img);
 					teamPokemonCard.appendChild(teamPokemonName);
+					teamPokemonCard.appendChild(pokemonTypes);
+					teamPokemonCard.appendChild(removeButton); 
+				
 					teamList.appendChild(teamPokemonCard);
 				});
 			}
-			updateTeamList()
-			
+		
 			pokemonInfo.appendChild(pokemonTypes);
 			pokemonCard.appendChild(pokemonInfo);
 			
@@ -137,7 +179,7 @@ function searchPokemon() {
 					if (!myTeam.includes(detailedPokemon)) {
 						myTeam.push(detailedPokemon);
 						console.log(`Added ${detailedPokemon.name} to the team`);
-	
+						
 						updateTeamList();
 					} else {
 						console.log(`${detailedPokemon.name} is already in the team`);
@@ -177,13 +219,14 @@ function searchPokemon() {
 	
 	teamScreenBtn.addEventListener('click', () => {
 		firstScreen.style.display = 'none';
+		searchPokemonInput.style.display = 'none'
 		secondScreen.style.display = 'flex'
 	});
 	
 	goToMainScreenBtn.addEventListener('click', () => {
 		console.log('Go Back button clicked');
 		firstScreen.style.display = 'block';
-	
+		
 	});
 	
 	
