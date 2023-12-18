@@ -152,16 +152,17 @@ function searchPokemon() {
 					teamPokemonCard.appendChild(buttonContainer);
 					
 					const removeButton = document.createElement('button');
-					removeButton.textContent = 'Remove';
 					removeButton.className = 'remove-btn';
+					const removeImage = document.createElement('img')
+					removeImage.src = '/img/Group 2 (1).png'
+					removeButton.appendChild(removeImage)
 					removeButton.addEventListener('click', () => {
 						// Code to remove this Pokemon from the team
 					});
-					
+					buttonContainer.appendChild(removeButton); 
 					teamPokemonCard.appendChild(img);
 					teamPokemonCard.appendChild(teamPokemonName);
 					teamPokemonCard.appendChild(pokemonTypes);
-					teamPokemonCard.appendChild(removeButton); 
 				
 					teamList.appendChild(teamPokemonCard);
 				});

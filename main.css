@@ -176,7 +176,7 @@ input {
 	transition: opacity 0.5s ease-in-out;
 	position: relative;
 }
-.add-btn img, .reserve-btn img {
+.add-btn img, .reserve-btn img, .remove-btn img {
 	width: 40px;
 	height: 40px;
 }
@@ -191,8 +191,25 @@ input {
 .pokemon-list-container:hover .add-btn {
 	opacity: 1;
 }
+.pokemon-list-container:hover .remove-btn {
+	opacity: 1;
+}
+.pokemon-list-container:hover .remove-btn img {
+	opacity: 1;
+}
+
 
 .reserve-btn{
+	background:none;
+	border: none;
+	cursor: pointer;
+	z-index: 1;
+	opacity: 0; 
+	transition: opacity 0.5s ease-in-out;
+	position: relative;
+}
+
+.remove-btn {
 	background:none;
 	border: none;
 	cursor: pointer;
