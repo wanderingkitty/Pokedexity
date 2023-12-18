@@ -113,7 +113,7 @@ function searchPokemon() {
 				const teamList = document.querySelector('.team-list');
 				teamList.innerHTML = '';  
 				
-				myTeam.forEach((pokemonData) => {
+				myTeam.forEach((pokemonData, index) => {
 			
 					const teamPokemonCard = document.createElement('div');	
 					teamPokemonCard.className = 'pokemon-list-container';
@@ -159,7 +159,8 @@ function searchPokemon() {
 					removeImage.src = '/img/Group 2 (1).png'
 					removeButton.appendChild(removeImage)
 					removeButton.addEventListener('click', () => {
-						// Code to remove this Pokemon from the team
+						myTeam.splice(index, 1); 
+						updateTeamList();
 					});
 					buttonContainer.appendChild(removeButton); 
 					teamPokemonCard.appendChild(img);
@@ -223,6 +224,7 @@ function searchPokemon() {
 	teamScreenBtn.addEventListener('click', () => {
 		firstScreen.classList.add('hide');
 		secondScreen.classList.remove('hide');
+		searchPokemonInput.classList.add('hide')
 	});
 	
 	goToMainScreenBtn.addEventListener('click', () => {
