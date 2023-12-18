@@ -2,7 +2,7 @@
 @media screen and (min-width: 300px) {
 	
 	.pokemon-list-container {
-		height: 320px;
+		height: 260px;
 		display: flex;
 		flex-direction: column;
 		align-items:center;
@@ -29,15 +29,16 @@
 	#poke-list {
 		grid-column: 2;
 	}
-
+	
+	
 	
 }
 
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 900px) {
 	
 	.pokemon-list-container {
-		height: 320px;
+		height: 290px;
 		display: flex;
 		flex-direction: column;
 		align-items:center;
@@ -79,5 +80,7 @@
         flex-direction: row; /* Aligns children horizontally */
         /* Other styles if needed */
     }
+
+
 	
 }

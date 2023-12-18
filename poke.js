@@ -13,13 +13,15 @@ const maxTeamMembers = 3
 
 
 // Function to hide second view screen
+// Function to hide second view screen
 export function hideSecondScreen() {
-	console.log('Hiding second screen');
-	firstScreen.classList.remove('hide');
-	firstScreen.classList.add('show');
-	secondScreen.classList.remove('show');
-	secondScreen.classList.add('hide');
+    console.log('Hiding second screen');
+    firstScreen.classList.remove('hide');
+    firstScreen.classList.add('show');
+    secondScreen.classList.remove('show');
+    secondScreen.classList.add('hide');
 }
+
 hideSecondScreen();
 
 // Function to shuffle and get random pokemons, each time the page reloads
@@ -219,15 +221,13 @@ function searchPokemon() {
 	document.addEventListener('DOMContentLoaded', getPokemonDetails);
 	
 	teamScreenBtn.addEventListener('click', () => {
-		firstScreen.style.display = 'none';
-		searchPokemonInput.style.display = 'none'
-		secondScreen.style.display = 'flex'
+		firstScreen.classList.add('hide');
+		secondScreen.classList.remove('hide');
 	});
 	
 	goToMainScreenBtn.addEventListener('click', () => {
-		console.log('Go Back button clicked');
-		firstScreen.style.display = 'block';
-		
+		secondScreen.classList.add('hide');
+		firstScreen.classList.remove('hide');
 	});
 	
 	
