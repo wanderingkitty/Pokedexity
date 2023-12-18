@@ -1,10 +1,12 @@
 import { getPokemon, colors } from "./data.js";
-import { firstScreen } from "./team.js";
 
 export const secondScreen = document.querySelector('#second-screen');
 const pokemonListUrl = 'https://pokeapi.co/api/v2/pokemon?limit=150&offset=0';
 const displayLimit = 30; 
 export const searchPokemonInput = document.querySelector('#site-search');
+const goToMainScreenBtn = document.querySelector('.go-back-btn');
+const teamScreenBtn = document.querySelector('.team-btn');
+export const firstScreen = document.querySelector('#first-screen')
 let allPokemonData = [];
 const myTeam = []
 const maxTeamMembers = 3
@@ -38,11 +40,11 @@ function searchPokemon() {
 	}
 	
 	// Function to display Pokemon
-	function displayPokemon(pokemonList) {
+	export function displayPokemon(pokemonList) {
 		const pokemonContainer = document.querySelector('.pokemon-container');
 		pokemonContainer.innerHTML = '';
 		
-		pokemonList.forEach(async (pokemon) => {
+			pokemonList.forEach(async (pokemon) => {
 			const pokemonData = await fetch(pokemon.url);
 			const detailedPokemon = await pokemonData.json();
 			
@@ -172,4 +174,17 @@ function searchPokemon() {
 	
 	searchPokemonInput.addEventListener('input', debounce(searchPokemon, 300));
 	document.addEventListener('DOMContentLoaded', getPokemonDetails);
+	
+	teamScreenBtn.addEventListener('click', () => {
+		firstScreen.style.display = 'none';
+		secondScreen.style.display = 'flex'
+	});
+	
+	goToMainScreenBtn.addEventListener('click', () => {
+		console.log('Go Back button clicked');
+		firstScreen.style.display = 'block';
+	
+	});
+	
+	
 	
