@@ -13,6 +13,7 @@ header {
 h1 {
 	color:#D9D9D9;
 	text-align: center;
+	font-size: 2em;
 }
 
 ul {
@@ -69,6 +70,10 @@ input {
 	margin: 0.2em;
 	margin-bottom: 1em;
 	display: flex;
+}
+
+.team-btn:hover {
+	background-color:#D9D9D9;
 }
 .pokemon-list-container  {
 	background-color: #972929; 
@@ -218,4 +223,19 @@ input {
 	top: -0.5em;
     left: 0.5em; 
     right: 0.5em; 
+}
+
+@keyframes neonBlink {
+    0%, 100% {
+        color:#D9D9D9;
+        text-shadow: 0 0 5px [Your_Current_Color], 0 0 10px #D9D9D9; /
+    }
+    50% {
+        color: #FF6EC7; 
+        text-shadow: 0 0 20px #FF6EC7, 0 0 30px #FF6EC7; 
+    }
+}
+
+h1 {
+    animation: neonBlink 1.5s ease-in-out infinite;
 }

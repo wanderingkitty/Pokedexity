@@ -2,7 +2,7 @@ import { getPokemon } from "./data.js";
 import { firstScreen } from "./team.js";
 export const secondScreen = document.querySelector('#second-screen')
 const pokemonListUrl = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0'
-const displayLimit = 20; 
+const displayLimit = 30; 
 export const searchPokemonInput = document.querySelector('#site-search')
 
 //Function to hide second view screen
