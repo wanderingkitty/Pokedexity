@@ -13,13 +13,12 @@ const maxTeamMembers = 3
 
 
 // Function to hide second view screen
-// Function to hide second view screen
 export function hideSecondScreen() {
-    console.log('Hiding second screen');
-    firstScreen.classList.remove('hide');
-    firstScreen.classList.add('show');
-    secondScreen.classList.remove('show');
-    secondScreen.classList.add('hide');
+	console.log('Hiding second screen');
+	firstScreen.classList.remove('hide');
+	firstScreen.classList.add('show');
+	secondScreen.classList.remove('show');
+	secondScreen.classList.add('hide');
 }
 
 hideSecondScreen();
@@ -114,7 +113,7 @@ function searchPokemon() {
 				teamList.innerHTML = '';  
 				
 				myTeam.forEach((pokemonData, index) => {
-			
+					
 					const teamPokemonCard = document.createElement('div');	
 					teamPokemonCard.className = 'pokemon-list-container';
 					
@@ -141,16 +140,16 @@ function searchPokemon() {
 					});
 					const buttonContainer = document.createElement('div');
 					buttonContainer.className = 'button-container';
-			
+					
 					// Reserve Button
 					const reserveButton = document.createElement('button');
 					reserveButton.className = 'reserve-btn';
 					const reserveImage = document.createElement('img');
 					reserveImage.src = '/img/Group 14 (1).png'; 
 					reserveButton.appendChild(reserveImage);
-			
+					
 					buttonContainer.appendChild(reserveButton);
-			
+					
 					teamPokemonCard.appendChild(buttonContainer);
 					
 					const removeButton = document.createElement('button');
@@ -166,16 +165,35 @@ function searchPokemon() {
 					teamPokemonCard.appendChild(img);
 					teamPokemonCard.appendChild(teamPokemonName);
 					teamPokemonCard.appendChild(pokemonTypes);
-				
+					
 					teamList.appendChild(teamPokemonCard);
 				});
 			}
-		
+			
 			pokemonInfo.appendChild(pokemonTypes);
 			pokemonCard.appendChild(pokemonInfo);
 			
-			let popUpMessege = document.createElement('div')
-			popUpMessege.innerText = 'Team is full'
+			//Pop up alert for full team messege
+			function showPopUpMessage(message, nextToElement) {
+				let popUp = document.querySelector('.pop-up-message');
+				if (!popUp) {
+					popUp = document.createElement('div');
+					popUp.className = 'pop-up-message';
+					document.body.appendChild(popUp);
+				}
+				popUp.textContent = message;
+				popUp.style.display = 'block';
+				
+				const rect = nextToElement.getBoundingClientRect();
+				const offset = 20; // Change this value to adjust the vertical offset
+				popUp.style.top = `${rect.top + window.scrollY - offset}px`; // Position higher
+				popUp.style.left = `${rect.left + window.scrollX}px`;
+				
+				setTimeout(() => {
+					popUp.style.display = 'none';
+				}, 3000);
+			}
+			
 			
 			//Click event to add pokemon to the team
 			addButton.addEventListener('click', () => {
@@ -183,14 +201,15 @@ function searchPokemon() {
 					if (!myTeam.includes(detailedPokemon)) {
 						myTeam.push(detailedPokemon);
 						console.log(`Added ${detailedPokemon.name} to the team`);
-						
 						updateTeamList();
+						showPopUpMessage("Pokemon added to the team!", addButton);
 					} else {
 						console.log(`${detailedPokemon.name} is already in the team`);
+						showPopUpMessage("Pokemon is already in the team.", addButton); 
 					}
 				} else {
 					console.log('Cannot add more members. Team is full.');
-					document.body.appendChild(popUpMessege);
+					showPopUpMessage("Cannot add more members. Team is full.", addButton); 
 				}
 			});
 		});
