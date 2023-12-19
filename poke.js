@@ -153,7 +153,6 @@ function searchPokemon() {
 					reserveImage.src = '/img/Group 14 (1).png'; 
 
 					reserveButton.appendChild(reserveImage);
-			
 					buttonContainer.appendChild(reserveButton);
 					teamPokemonCard.appendChild(buttonContainer);
 					
@@ -260,7 +259,7 @@ function searchPokemon() {
 
 						removeButton.addEventListener('click', () => {
 							reservedPokemon.splice(index, 1); 
-							updateTeamList();
+							updateReservedList();
 						});
 						
 						updateTeamList();

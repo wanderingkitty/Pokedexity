@@ -10,6 +10,7 @@ export { getPokemon }
 
 import { getPokemonDetails } from "./poke.js"
 
+//Object for specifying typed colors of pokemons
 export const colors = {
     fire: '#FDDFDF',
     grass: '#DEFDE0',
