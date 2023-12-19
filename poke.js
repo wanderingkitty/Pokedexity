@@ -9,8 +9,8 @@ const teamScreenBtn = document.querySelector('.team-btn');
 export const firstScreen = document.querySelector('#first-screen')
 let allPokemonData = [];
 const myTeam = []
+const reservedPokemon = []
 const maxTeamMembers = 3
-
 
 // Function to hide second view screen
 export function hideSecondScreen() {
@@ -82,16 +82,15 @@ function searchPokemon() {
 			reserveButton.className = 'reserve-btn';
 			const reserveImage = document.createElement('img');
 			reserveImage.src = '/img/Group 14 (1).png';
+
 			reserveButton.appendChild(reserveImage);
-			
 			buttonContainer.appendChild(addButton);
 			buttonContainer.appendChild(reserveButton);
-			
 			pokemonCard.appendChild(img);
 			pokemonCard.appendChild(pokemonName);
 			pokemonCard.appendChild(buttonContainer);
 			pokemonContainer.appendChild(pokemonCard);
-			//Gettingpokemon types
+
 			const pokemonTypes = document.createElement('div');
 			pokemonTypes.className = 'pokemon-types';
 			
@@ -128,7 +127,6 @@ function searchPokemon() {
 					'/img/poketext.png';
 					img.className = 'pokemon-image'; 
 					
-					// Pokemon Types
 					const pokemonTypes = document.createElement('div');
 					pokemonTypes.className = 'pokemon-types';
 					pokemonData.types.forEach((typeSlot) => {
@@ -141,7 +139,6 @@ function searchPokemon() {
 					const buttonContainer = document.createElement('div');
 					buttonContainer.className = 'button-container';
 					
-					// Reserve Button
 					const reserveButton = document.createElement('button');
 					reserveButton.className = 'reserve-btn';
 					const reserveImage = document.createElement('img');
@@ -170,6 +167,65 @@ function searchPokemon() {
 				});
 			}
 			
+			function updateReservedList() {
+				const reservedList = document.querySelector('.reserved-list'); 
+				reservedList.innerHTML = '';  
+				
+				reservedPokemon.forEach((pokemonData) => {
+					const teamPokemonCard = document.createElement('div');	
+					teamPokemonCard.className = 'pokemon-list-container';
+					
+					const teamPokemonName = document.createElement('div');
+					teamPokemonName.textContent = pokemonData.name.toUpperCase();
+					teamPokemonName.className = 'pokemon-name';
+					
+					const img = document.createElement('img');
+					img.src = pokemonData.sprites.other.dream_world.front_default ||
+					pokemonData.sprites.other['official-artwork'].front_default ||
+					pokemonData.sprites.front_default ||
+					'/img/poketext.png';
+					img.className = 'pokemon-image'; 
+					
+					const pokemonTypes = document.createElement('div');
+					pokemonTypes.className = 'pokemon-types';
+					pokemonData.types.forEach((typeSlot) => {
+						const type = document.createElement('span');
+						type.textContent = typeSlot.type.name;
+						type.style.backgroundColor = colors[typeSlot.type.name] || '#CCCCCC';
+						type.className = 'pokemon-type';
+						pokemonTypes.appendChild(type);
+					});
+					const buttonContainer = document.createElement('div');
+					buttonContainer.className = 'button-container';
+					
+					const reserveButton = document.createElement('button');
+					reserveButton.className = 'reserve-btn';
+					const reserveImage = document.createElement('img');
+					reserveImage.src = '/img/Group 14 (1).png'; 
+					reserveButton.appendChild(reserveImage);
+					
+					buttonContainer.appendChild(reserveButton);
+					
+					teamPokemonCard.appendChild(buttonContainer);
+					
+					const removeButton = document.createElement('button');
+					removeButton.className = 'remove-btn';
+					const removeImage = document.createElement('img')
+					removeImage.src = '/img/Group 2 (1).png'
+					removeButton.appendChild(removeImage)
+					removeButton.addEventListener('click', () => {
+					reservedPokemon.splice(index, 1); 
+
+					updateTeamList();
+
+					});
+					buttonContainer.appendChild(removeButton); 
+					teamPokemonCard.appendChild(img);
+					teamPokemonCard.appendChild(teamPokemonName);
+					teamPokemonCard.appendChild(pokemonTypes);
+				  	reservedList.appendChild(teamPokemonCard);
+				});
+			}
 			pokemonInfo.appendChild(pokemonTypes);
 			pokemonCard.appendChild(pokemonInfo);
 			
@@ -185,15 +241,25 @@ function searchPokemon() {
 				popUp.style.display = 'block';
 				
 				const rect = nextToElement.getBoundingClientRect();
-				const offset = 20; // Change this value to adjust the vertical offset
-				popUp.style.top = `${rect.top + window.scrollY - offset}px`; // Position higher
+				const offset = 20;
+				popUp.style.top = `${rect.top + window.scrollY - offset}px`; 
 				popUp.style.left = `${rect.left + window.scrollX}px`;
 				
 				setTimeout(() => {
 					popUp.style.display = 'none';
 				}, 3000);
 			}
-			
+
+			//Click event to reserve pokemon
+			reserveButton.addEventListener('click', () => {
+				if (!reservedPokemon.includes(detailedPokemon)) {
+					reservedPokemon.push(detailedPokemon);
+					console.log(`Added ${detailedPokemon.name} to reserved list`);
+					updateReservedList();
+				} else {
+					console.log(`${detailedPokemon.name} is already in the reserved list`);
+				}
+			});
 			
 			//Click event to add pokemon to the team
 			addButton.addEventListener('click', () => {
