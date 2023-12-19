@@ -1,20 +1,18 @@
+/* Main elements styling */
 *{
 	margin: 0;
 	padding: 0;
 	box-sizing:border-box;
 }
-
 html{
 	scroll-behavior: smooth;
 }
-
 body {
 	font-family: 'Quicksand', sans-serif;
 	margin: 0;
 	padding: 0;
 	background-color: #2e2e2e;
 }
-
 header {
 	display: flex;
 	flex-direction: column;
@@ -25,8 +23,13 @@ h1 {
 	text-align: center;
 	font-size: 2em;
 	margin: 0.1em;
+    animation: neonBlink 1.5s ease-in-out infinite;
 }
-
+h2 {
+	font-size: 2em;
+	margin-top: 0.6em;
+	margin-bottom: 1em;
+}
 hr {
 	width: 60vw;
     margin: 20px auto;
@@ -38,28 +41,6 @@ hr {
     background-image: linear-gradient(to right, transparent, rgba(255,255,255,0.8), transparent);
     background-size: 200% auto;
     animation: shine 2s linear infinite;
-}
-
-@keyframes shine {
-    to {
-        background-position: 200% center;
-    }
-}
-
-.logo img {
-	grid-column: 1;
-}
-
-.logo {
-	width: 100px;
-	background:none;
-	border: none;
-	cursor: pointer;
-	display: flex;
-	justify-content: center;
-	align-items:center;
-	margin: 0.5em;
-	margin-top: 1em;
 }
 input {
 	border-radius: 100px;
@@ -74,6 +55,39 @@ input {
 	border: none;
 	font-size: 1em;
 	padding: 1em;
+}
+/* =============================================== */
+/* keyframes */
+@keyframes neonBlink {
+    0%, 100% {
+        color:#D9D9D9;
+        text-shadow: 0 0 5px #D9D9D9, 0 0 10px #D9D9D9; 
+    }
+    50% {
+        color: #FF6EC7; 
+        text-shadow: 0 0 20px #FF6EC7, 0 0 30px #FF6EC7; 
+    }
+}
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+/* =============================================== */
+/* Top elements styling */
+.logo img {
+	grid-column: 1;
+}
+.logo {
+	width: 100px;
+	background:none;
+	border: none;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	margin: 0.5em;
+	margin-top: 1em;
 }
 .team-btn, .reserved-btn {
 	background-color: #FFDC5E;
@@ -94,10 +108,12 @@ input {
 	margin-bottom: 1em;
 	display: flex;
 }
-
 .team-btn:hover {
 	background-color:#D9D9D9;	
 }
+/* =============================================== */
+
+/* Main pokemon section styling, visualize pokemons */
 .pokemon-list-container  {
 	background-color: #972929; 
 	/* background-color:#a69f987e; */
@@ -116,7 +132,6 @@ input {
 	margin-bottom: 1em; 	
 	position: relative;
 }	
-
 .pokemon-list-container img {
 	height: 100px; 
 	margin-bottom: 0.5em;
@@ -124,55 +139,6 @@ input {
 	align-self: center;
 	transition: opacity 0.3s ease;
 }
-
-.pokemon-list-container:hover img {
-	opacity: 0; 
-}
-.pokemon-container {
-	display: grid;
-    justify-content: center;
-    align-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-	gap: 10px;
-}
-
-.show {
-	display: block;
-}
-
-.hide {
-	display: none;
-} 
-
-.pop-up-window {
-	background-color:#D9D9D9;
-	border:1px solid #2e2e2e;
-	color:#2e2e2e;
-	width: 8em;
-}
-.team-container > * {
-    display: flex;
-    flex-direction: column;
-    color: #D9D9D9;
-    justify-content: center;
-    align-items: center;
-}
-
-#poke-list {
-	display: flex;
-	justify-content: center;
-	align-self:center;
-	margin: auto;
-	grid-column: 2;
-}
-
-.go-back-container {
-	display: flex;
-	margin: auto;
-	justify-content: center;
-	align-items:center;
-}
-
 .pokemon-list-container:hover {
 	transform: translateY(-5px); 
 	box-shadow: 0px 0px 30px rgba(73, 73, 73, 0.9);
@@ -186,7 +152,79 @@ input {
 	align-items: center; 	
 	justify-content: center;
 }
+.pokemon-list-container:hover img {
+	opacity: 0; 
+}
+.pokemon-container {
+	display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	gap: 10px;
+}
+/* =============================================== */
 
+/* Classes to display/not display elements */
+.show {
+	display: block;
+}
+.hide {
+	display: none;
+} 
+/* =============================================== */
+
+/* Info text window */
+.pop-up-window {
+	background-color:#D9D9D9;
+	border:1px solid #2e2e2e;
+	color:#2e2e2e;
+	width: 8em;
+}
+.pop-up-message {
+    display: none; 
+    position: absolute; 
+    background-color:#d9d9d9;
+    color:#2e2e2e;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+	top: 10em;
+    left: 50px; 
+	z-index: 2;
+}
+/* =============================================== */
+
+/* Styling elements inside pokemon container */
+.team-container > * {
+    display: flex;
+    flex-direction: column;
+    color: #D9D9D9;
+    justify-content: center;
+    align-items: center;
+}
+/* =============================================== */
+
+/* Main style for list view */
+#poke-list {
+	display: flex;
+	justify-content: center;
+	align-self:center;
+	margin: auto;
+	grid-column: 2;
+}
+/* =============================================== */
+
+/* Contains go back btn */
+.go-back-container {
+	display: flex;
+	margin: auto;
+	justify-content: center;
+	align-items:center;
+}
+/* =============================================== */
+
+/* Styling for buttons on cards */
 .add-btn img, 
 .reserve-btn img, 
 .remove-btn img,
@@ -194,21 +232,18 @@ input {
 	width: 40px;
 	height: 40px;
 }
-
 .pokemon-list-container:hover .remove-btn img, 
 .pokemon-list-container:hover .edit-btn img,
 .pokemon-list-container:hover .reserve-btn img,
 .pokemon-list-container:hover .add-btn img  {
 	opacity: 1;
 }
-
 .pokemon-list-container:hover .add-btn,
 .pokemon-list-container:hover .reserve-btn,
 .pokemon-list-container:hover .remove-btn,
 .pokemon-list-container:hover .edit-btn{
     opacity: 1;
 }
-
 .add-btn, .reserve-btn, .remove-btn, .edit-btn{
 	background:none;
 	border: none;
@@ -218,7 +253,6 @@ input {
 	transition: opacity 0.5s ease-in-out;
 	position: relative;
 }
-
 .button-container {
 	position: absolute;
 	display: flex;
@@ -228,33 +262,16 @@ input {
 	left: 0.5em; 
 	right: 0.5em; 
 }
+/* =============================================== */
 
-@keyframes neonBlink {
-    0%, 100% {
-        color:#D9D9D9;
-        text-shadow: 0 0 5px #D9D9D9, 0 0 10px #D9D9D9; 
-    }
-    50% {
-        color: #FF6EC7; 
-        text-shadow: 0 0 20px #FF6EC7, 0 0 30px #FF6EC7; 
-    }
-}
-
-h1 {
-    animation: neonBlink 1.5s ease-in-out infinite;
-}
-
-h2 {
-	font-size: 2em;
-	margin-top: 0.6em;
-	margin-bottom: 1em;
-}
-
+/* Styling for names of pokemons */
 .pokemon-name {
 	position: relative;
 	top: 2.5em;
 }
+/* =============================================== */
 
+/* Styling for pokemon types */
 .pokemon-type {
 	display:flex;
 	position: relative;
@@ -268,26 +285,34 @@ h2 {
 	margin: 0.2em;
 	margin-bottom: 2em;
 }
-
 .pokemon-types {
 	display: flex;
     margin: 0.3em; 
     font-size: 0.9em;
 }
+/* =============================================== */
 
+/* Styling for pokeon, after its search so its centered */
 .centered-pokemon {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin: 0 auto;
   }
+/* =============================================== */
 
+/* Second screen view styling */
   #second-screen{
 	display: flex;
 	flex-direction: column;
 	margin: 0 auto;
   }
+  #second-screen.hide {
+    display: none;
+}
+/* =============================================== */
 
+/* Go back btn styling */
   .go-back-btn {
 	background-color: #FFDC5E;
 	color:#2e2e2e;
@@ -307,26 +332,10 @@ h2 {
 	margin-bottom: 0.6em;
 	margin-top: 0.2em;
   }
-
   .go-back-btn:hover {
 	background-color:#D9D9D9;	
   }
 
-  #second-screen.hide {
-    display: none;
-}
 
-.pop-up-message {
-    display: none; 
-    position: absolute; 
-    background-color:#d9d9d9;
-    color:#2e2e2e;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
-	top: 10em;
-    left: 50px; 
-	z-index: 2;
-}
+
 
