@@ -129,11 +129,6 @@ input {
 	opacity: 0; 
 }
 .pokemon-container {
-	/* display: grid;
-	justify-content: center;
-	align-items: center;
-	grid-template-columns: repeat(3,1fr);
-	clear: both; */
 	display: grid;
     justify-content: center;
     align-items: center;
@@ -162,24 +157,6 @@ input {
     justify-content: center;
     align-items: center;
 }
-
-/* .team-container {
-	border: 3px solid #FFDC5E;
-	margin-left: 2.5em;
-	margin-right: 2.5em;
-	animation: neonBlink2 1.5s ease-in-out infinite;
-	text-align: center;
-} */
-
-/* @keyframes neonBlink2 {
-    0%, 100% {
-        box-shadow: 0 0 8px #FFDC5E, 0 0 10px #FFDC5E, 0 0 20px #FFDC5E; 
-    }
-    50% {
-        box-shadow: 0 0 2px #FFDC5E, 0 0 4px #FFDC5E; 
-    }
-} */
-
 
 #poke-list {
 	display: flex;
@@ -210,49 +187,29 @@ input {
 	justify-content: center;
 }
 
-.add-btn {
-	background:none;
-	border: none;
-	cursor: pointer;
-	z-index: 1;
-	opacity: 0; 
-	transition: opacity 0.5s ease-in-out;
-	position: relative;
-}
-.add-btn img, .reserve-btn img, .remove-btn img {
+.add-btn img, 
+.reserve-btn img, 
+.remove-btn img,
+.edit-btn img {
 	width: 40px;
 	height: 40px;
 }
 
-.pokemon-list-container:hover .add-btn img {
-	opacity: 1;
-}
-
-.pokemon-list-container:hover .reserve-btn img {
-	opacity: 1;
-}
-
-.pokemon-list-container:hover .remove-btn img {
+.pokemon-list-container:hover .remove-btn img, 
+.pokemon-list-container:hover .edit-btn img,
+.pokemon-list-container:hover .reserve-btn img,
+.pokemon-list-container:hover .add-btn img  {
 	opacity: 1;
 }
 
 .pokemon-list-container:hover .add-btn,
 .pokemon-list-container:hover .reserve-btn,
-.pokemon-list-container:hover .remove-btn {
+.pokemon-list-container:hover .remove-btn,
+.pokemon-list-container:hover .edit-btn{
     opacity: 1;
 }
 
-.reserve-btn{
-	background:none;
-	border: none;
-	cursor: pointer;
-	z-index: 1;
-	opacity: 0; 
-	transition: opacity 0.5s ease-in-out;
-	position: relative;
-}
-
-.remove-btn {
+.add-btn, .reserve-btn, .remove-btn, .edit-btn{
 	background:none;
 	border: none;
 	cursor: pointer;
@@ -295,7 +252,7 @@ h2 {
 
 .pokemon-name {
 	position: relative;
-	top: 2em;
+	top: 2.5em;
 }
 
 .pokemon-type {

@@ -138,6 +138,12 @@ function searchPokemon() {
 						type.className = 'pokemon-type';
 						pokemonTypes.appendChild(type);
 					});
+
+					const editNameButton = document.createElement('button')
+					editNameButton.className = 'edit-btn'
+					const editImage = document.createElement('img')
+					editImage.src = '/img/edit.png'
+					editNameButton.appendChild(editImage)
 					const buttonContainer = document.createElement('div');
 					buttonContainer.className = 'button-container';
 					
@@ -175,6 +181,7 @@ function searchPokemon() {
 					});
 					
 					buttonContainer.appendChild(removeButton); 
+					buttonContainer.appendChild(editNameButton)
 					teamPokemonCard.appendChild(img);
 					teamPokemonCard.appendChild(teamPokemonName);
 					teamPokemonCard.appendChild(pokemonTypes);

@@ -18,10 +18,6 @@
 		width: auto;
 	}
 	
-	/* .add-btn {
-		margin-top: 1em;
-	} */
-	
 	img {
 		width: 150px;
 	}
@@ -29,8 +25,6 @@
 	#poke-list {
 		grid-column: 2;
 	}
-	
-	
 	
 }
 
@@ -57,10 +51,6 @@
 	.pop-up-window {
 		width: auto;
 	}
-	
-	/* .add-btn {
-		margin-top: 1em;
-	} */
 	
 	img {
 		margin-top: 1.5em;
