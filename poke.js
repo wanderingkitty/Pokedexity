@@ -368,6 +368,8 @@ function searchPokemon() {
 	goToMainScreenBtn.addEventListener('click', () => {
 		secondScreen.classList.add('hide');
 		firstScreen.classList.remove('hide');
+		searchPokemonInput.classList.remove('hide')
+		searchPokemonInput.classList.add('show')
 	});
 	
 	
