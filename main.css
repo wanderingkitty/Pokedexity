@@ -116,7 +116,6 @@ input {
 /* Main pokemon section styling, visualize pokemons */
 .pokemon-list-container  {
 	background-color: #972929; 
-	/* background-color:#a69f987e; */
 	color:#D9D9D9;
 	border-radius: 14px;
 	width: 280px;
@@ -133,11 +132,12 @@ input {
 	position: relative;
 }	
 .pokemon-list-container img {
-	height: 100px; 
-	margin-bottom: 0.5em;
+	height: 120px; 
 	display: flex;
 	align-self: center;
 	transition: opacity 0.3s ease;
+	position: relative;
+	top: 2em;
 }
 .pokemon-list-container:hover {
 	transform: translateY(-5px); 
@@ -258,7 +258,7 @@ input {
 	display: flex;
 	justify-content: space-between;
 	align-items:center;
-	top: 0.1em;
+	top: -0.5em;
 	left: 0.5em; 
 	right: 0.5em; 
 }

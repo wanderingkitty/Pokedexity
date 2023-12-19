@@ -138,12 +138,24 @@ function searchPokemon() {
 						type.className = 'pokemon-type';
 						pokemonTypes.appendChild(type);
 					});
-
+					const teamListName = document.createElement('div');
+					teamListName.textContent = pokemonData.customName || pokemonData.name.toUpperCase();
+					teamListName.className = 'pokemon-name';
+					
 					const editNameButton = document.createElement('button')
 					editNameButton.className = 'edit-btn'
 					const editImage = document.createElement('img')
 					editImage.src = '/img/edit.png'
 					editNameButton.appendChild(editImage)
+					
+					editNameButton.addEventListener('click',() =>{
+						const nickName = prompt('Change name for ' + pokemonData.name)
+						if(nickName) {
+							pokemonData.customName = nickName
+							updateTeamList()
+						}
+					})
+
 					const buttonContainer = document.createElement('div');
 					buttonContainer.className = 'button-container';
 					
@@ -163,6 +175,7 @@ function searchPokemon() {
 					removeButton.appendChild(removeImage)
 					
 					removeButton.addEventListener('click', () => {
+						delete pokemonData.customName;
 						myTeam.splice(index, 1); 
 						updateTeamList();
 					});
@@ -170,6 +183,7 @@ function searchPokemon() {
 					reserveButton.addEventListener('click', () => {
 						if (!reservedPokemon.includes(pokemonData)) {
 							reservedPokemon.push(pokemonData);
+							delete pokemonData.customName; 
 							myTeam.splice(index, 1);
 							console.log(`Moved ${pokemonData.name} to reserved list`);
 							updateTeamList(); 
@@ -182,7 +196,7 @@ function searchPokemon() {
 					buttonContainer.appendChild(removeButton); 
 					buttonContainer.appendChild(editNameButton)
 					teamPokemonCard.appendChild(img);
-					teamPokemonCard.appendChild(teamPokemonName);
+					teamPokemonCard.appendChild(teamListName);
 					teamPokemonCard.appendChild(pokemonTypes);
 					teamList.appendChild(teamPokemonCard);
 				});
@@ -369,7 +383,6 @@ function searchPokemon() {
 			reservedList.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}
 	});
-	
 	
 	goToMainScreenBtn.addEventListener('click', () => {
 		secondScreen.classList.add('hide');
