@@ -161,6 +161,18 @@ function searchPokemon() {
 						myTeam.splice(index, 1); 
 						updateTeamList();
 					});
+
+					reserveButton.addEventListener('click', () => {
+						if (!reservedPokemon.includes(pokemonData)) {
+							reservedPokemon.push(pokemonData);
+							myTeam.splice(index, 1);
+							console.log(`Moved ${pokemonData.name} to reserved list`);
+							updateTeamList(); 
+							updateReservedList(); 
+						} else {
+							console.log(`${pokemonData.name} is already in the reserved list`);
+						}
+					});
 					
 					buttonContainer.appendChild(removeButton); 
 					teamPokemonCard.appendChild(img);
@@ -175,7 +187,7 @@ function searchPokemon() {
 				const reservedList = document.querySelector('.reserved-list'); 
 				reservedList.innerHTML = '';  
 				
-				reservedPokemon.forEach((pokemonData) => {
+				reservedPokemon.forEach((pokemonData, index) => {
 					const teamPokemonCard = document.createElement('div');	
 					teamPokemonCard.className = 'pokemon-list-container';
 					
@@ -212,7 +224,7 @@ function searchPokemon() {
 					
 					addButton.addEventListener('click', () => {
 						if (myTeam.length < maxTeamMembers) {
-							if (!myTeam.includes(pokemonData)) {
+							if (!myTeam.includes(pokemonData, index)) {
 								myTeam.push(pokemonData);
 								console.log(`Added ${pokemonData.name} to the team`);
 								// Find index in the reserved list
@@ -238,9 +250,7 @@ function searchPokemon() {
 					const removeImage = document.createElement('img')
 					removeImage.src = '/img/Group 2 (1).png'
 					removeButton.appendChild(removeImage)
-					removeButton.addEventListener('click', () => {
-						reservedPokemon.splice(index, 1); 
-						
+
 						removeButton.addEventListener('click', () => {
 							reservedPokemon.splice(index, 1); 
 							updateTeamList();
@@ -248,8 +258,6 @@ function searchPokemon() {
 						
 						updateTeamList();
 						
-					});
-				
 					teamPokemonCard.appendChild(buttonContainer);
 					buttonContainer.appendChild(removeButton); 
 					buttonContainer.appendChild(addButton);

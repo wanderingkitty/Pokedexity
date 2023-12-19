@@ -165,10 +165,12 @@ input {
 
 .team-container {
 	border: 3px solid #FFDC5E;
-	margin-left: 4em;
-	margin-right: 4em;
+	margin-left: 2.5em;
+	margin-right: 2.5em;
 	animation: neonBlink2 1.5s ease-in-out infinite;
+	text-align: center;
 }
+
 
 @keyframes neonBlink2 {
     0%, 100% {
@@ -266,7 +268,7 @@ input {
 	display: flex;
 	justify-content: space-between;
 	align-items:center;
-	top: -0.1em;
+	top: 0.1em;
 	left: 0.5em; 
 	right: 0.5em; 
 }
