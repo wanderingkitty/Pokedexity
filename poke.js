@@ -1,5 +1,5 @@
 import { getPokemon, colors } from "./data.js";
-
+//Variables 
 export const secondScreen = document.querySelector('#second-screen');
 const pokemonListUrl = 'https://pokeapi.co/api/v2/pokemon?limit=150&offset=0';
 const displayLimit = 30; 
@@ -14,6 +14,8 @@ const myTeam = []
 const reservedPokemon = []
 const maxTeamMembers = 3
 
+/* =============================================== */
+
 // Function to hide second view screen
 export function hideSecondScreen() {
 	console.log('Hiding second screen');
@@ -25,6 +27,8 @@ export function hideSecondScreen() {
 
 hideSecondScreen();
 
+/* =============================================== */
+
 // Function to shuffle and get random pokemons, each time the page reloads
 function shuffleArray(array) {
 	for (let i = array.length - 1; i > 0; i--) {
@@ -32,6 +36,7 @@ function shuffleArray(array) {
 		[array[i], array[mix]] = [array[mix], array[i]];
 	}
 }
+/* =============================================== */
 
 // Function to filter and display Pokemon based on search input
 function searchPokemon() {
@@ -41,12 +46,15 @@ function searchPokemon() {
 		);
 		displayPokemon(filteredPokemon);
 	}
+/* =============================================== */
 	
 	// Function to display Pokemon
 	export function displayPokemon(pokemonList) {
 		const pokemonContainer = document.querySelector('.pokemon-container');
 		pokemonContainer.innerHTML = '';
-		
+
+		//Foreach function to visualise data
+
 		pokemonList.forEach(async (pokemon) => {
 			const pokemonData = await fetch(pokemon.url);
 			const detailedPokemon = await pokemonData.json();
@@ -84,6 +92,8 @@ function searchPokemon() {
 			reserveButton.className = 'reserve-btn';
 			const reserveImage = document.createElement('img');
 			reserveImage.src = '/img/Group 14 (1).png';
+
+/* =============================================== */
 			
 			reserveButton.appendChild(reserveImage);
 			buttonContainer.appendChild(addButton);
@@ -95,7 +105,11 @@ function searchPokemon() {
 			
 			const pokemonTypes = document.createElement('div');
 			pokemonTypes.className = 'pokemon-types';
-			
+
+/* =============================================== */
+
+			//Visualising pokemon types function
+
 			detailedPokemon.types.forEach((typeSlot) => {
 				const type = document.createElement('span');
 				const typeName = typeSlot.type.name;
@@ -106,12 +120,15 @@ function searchPokemon() {
 				type.textContent = typeName;
 				pokemonTypes.appendChild(type);
 			});
+/* =============================================== */
 			
-			//Function to get added pokemons on a separate list
+			//Function to get added pokemons on a separate list after adding them
 			function updateTeamList() {
 				const teamList = document.querySelector('.team-list');
 				teamList.innerHTML = '';  
-				
+
+				//Function to show elements, copy of the created elemets inside displayPokemon function
+
 				myTeam.forEach((pokemonData, index) => {
 					
 					const teamPokemonCard = document.createElement('div');	
@@ -141,7 +158,8 @@ function searchPokemon() {
 					const teamListName = document.createElement('div');
 					teamListName.textContent = pokemonData.customName || pokemonData.name.toUpperCase();
 					teamListName.className = 'pokemon-name';
-					
+/* =============================================== */
+					//Buttons realisation with event listener
 					const editNameButton = document.createElement('button')
 					editNameButton.className = 'edit-btn'
 					const editImage = document.createElement('img')
@@ -192,6 +210,7 @@ function searchPokemon() {
 							console.log(`${pokemonData.name} is already in the reserved list`);
 						}
 					});
+/* =============================================== */
 					
 					buttonContainer.appendChild(removeButton); 
 					buttonContainer.appendChild(editNameButton)
@@ -201,8 +220,9 @@ function searchPokemon() {
 					teamList.appendChild(teamPokemonCard);
 				});
 			}
+/* =============================================== */
 			
-			//Function to list and show reserved pokemons members
+			//Function to list and show reserved pokemons members in a separeted list
 			function updateReservedList() {
 				const reservedList = document.querySelector('.reserved-list'); 
 				reservedList.innerHTML = '';  
@@ -289,6 +309,7 @@ function searchPokemon() {
 			}
 			pokemonInfo.appendChild(pokemonTypes);
 			pokemonCard.appendChild(pokemonInfo);
+/* =============================================== */
 			
 			//Pop up alert for full team messege
 			function showPopUpMessage(message, nextToElement) {
@@ -310,6 +331,7 @@ function searchPokemon() {
 					popUp.style.display = 'none';
 				}, 3000);
 			}
+/* =============================================== */
 			
 			//Click event to reserve pokemon
 			reserveButton.addEventListener('click', () => {
@@ -341,6 +363,7 @@ function searchPokemon() {
 			});
 		});
 	}
+/* =============================================== */
 	
 	// Function to visualize pokemon list from fetched data
 	export async function getPokemonDetails() {
@@ -363,7 +386,8 @@ function searchPokemon() {
 			debounceTimer = setTimeout(() => func.apply(context, args), delay);
 		}
 	}
-	
+/* =============================================== */
+	//Search pokemons function
 	searchPokemonInput.addEventListener('input', debounce(searchPokemon, 300));
 	document.addEventListener('DOMContentLoaded', getPokemonDetails);
 	
@@ -372,7 +396,8 @@ function searchPokemon() {
 		secondScreen.classList.remove('hide');
 		searchPokemonInput.classList.add('hide')
 	});
-	
+/* =============================================== */
+	//Reserved team view screen btn
 	reservedPokemonsButton.addEventListener('click', () => {
 		console.log('Reserved button works');
 		firstScreen.classList.add('hide');
@@ -383,7 +408,8 @@ function searchPokemon() {
 			reservedList.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}
 	});
-	
+/* =============================================== */
+	//Main screen btn view
 	goToMainScreenBtn.addEventListener('click', () => {
 		secondScreen.classList.add('hide');
 		firstScreen.classList.remove('hide');
