@@ -18,9 +18,9 @@
 		width: auto;
 	}
 	
-	.add-btn {
+	/* .add-btn {
 		margin-top: 1em;
-	}
+	} */
 	
 	img {
 		width: 150px;
@@ -58,9 +58,9 @@
 		width: auto;
 	}
 	
-	.add-btn {
+	/* .add-btn {
 		margin-top: 1em;
-	}
+	} */
 	
 	img {
 		margin-top: 1.5em;
@@ -77,10 +77,15 @@
 	}
 
 	.team-container > * {
-        flex-direction: row; /* Aligns children horizontally */
-        /* Other styles if needed */
+        flex-direction: row; 
     }
 
-
+	.reserved-list {
+		display: grid;
+		justify-content: center;
+		align-items: center;
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		gap: 10px;
+	}
 	
 }

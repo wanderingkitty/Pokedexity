@@ -1,3 +1,13 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing:border-box;
+}
+
+html{
+	scroll-behavior: smooth;
+}
+
 body {
 	font-family: 'Quicksand', sans-serif;
 	margin: 0;
@@ -16,6 +26,26 @@ h1 {
 	font-size: 2em;
 	margin: 0.1em;
 }
+
+hr {
+	width: 60vw;
+    margin: 20px auto;
+    display: block;
+    /* background-color:#D9D9D9; */
+    height: 2px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-image: linear-gradient(to right, transparent, rgba(255,255,255,0.8), transparent);
+    background-size: 200% auto;
+    animation: shine 2s linear infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
 .logo img {
 	grid-column: 1;
 }
@@ -45,7 +75,7 @@ input {
 	font-size: 1em;
 	padding: 1em;
 }
-.team-btn {
+.team-btn, .reserved-btn {
 	background-color: #FFDC5E;
 	color:#2e2e2e;
 	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -125,17 +155,30 @@ input {
 	color:#2e2e2e;
 	width: 8em;
 }
-
-.go-back-btn {
-	margin-right: 1em;
-}
 .team-container > * {
     display: flex;
-    flex-direction: column; /* Stacks children vertically */
+    flex-direction: column;
     color: #D9D9D9;
     justify-content: center;
     align-items: center;
 }
+
+.team-container {
+	border: 3px solid #FFDC5E;
+	margin-left: 4em;
+	margin-right: 4em;
+	animation: neonBlink2 1.5s ease-in-out infinite;
+}
+
+@keyframes neonBlink2 {
+    0%, 100% {
+        box-shadow: 0 0 8px #FFDC5E, 0 0 10px #FFDC5E, 0 0 20px #FFDC5E; 
+    }
+    50% {
+        box-shadow: 0 0 2px #FFDC5E, 0 0 4px #FFDC5E; 
+    }
+}
+
 
 #poke-list {
 	display: flex;
@@ -144,7 +187,6 @@ input {
 	margin: auto;
 	grid-column: 2;
 }
-
 
 .go-back-container {
 	display: flex;
@@ -188,16 +230,16 @@ input {
 .pokemon-list-container:hover .reserve-btn img {
 	opacity: 1;
 }
-.pokemon-list-container:hover .add-btn {
-	opacity: 1;
-}
-.pokemon-list-container:hover .remove-btn {
-	opacity: 1;
-}
+
 .pokemon-list-container:hover .remove-btn img {
 	opacity: 1;
 }
 
+.pokemon-list-container:hover .add-btn,
+.pokemon-list-container:hover .reserve-btn,
+.pokemon-list-container:hover .remove-btn {
+    opacity: 1;
+}
 
 .reserve-btn{
 	background:none;
@@ -219,14 +261,11 @@ input {
 	position: relative;
 }
 
-.pokemon-list-container:hover .reserve-btn {
-	opacity: 1;
-}
-
 .button-container {
 	position: absolute;
 	display: flex;
 	justify-content: space-between;
+	align-items:center;
 	top: -0.1em;
 	left: 0.5em; 
 	right: 0.5em; 
@@ -249,8 +288,8 @@ h1 {
 
 h2 {
 	font-size: 2em;
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
+	margin-top: 0.6em;
+	margin-bottom: 1em;
 }
 
 .pokemon-name {
@@ -307,7 +346,7 @@ h2 {
 	justify-content: center;
 	align-items: center;
 	margin: 0.2em;
-	margin-bottom: 0.2em;
+	margin-bottom: 0.6em;
 	margin-top: 0.2em;
   }
 
@@ -332,3 +371,4 @@ h2 {
     left: 50px; 
 	z-index: 2;
 }
+
