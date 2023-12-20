@@ -207,13 +207,14 @@ function searchPokemon() {
 		}
 	}
 	/* =============================================== */
-	
+	//Go to the team screen view btn
 	teamScreenBtn.addEventListener('click', () => {
 		firstScreen.classList.add('hide');
 		secondScreen.classList.remove('hide');
 		searchPokemonInput.classList.add('hide')
 	});
 	/* =============================================== */
+
 	//Reserved team view screen btn
 	reservedPokemonsButton.addEventListener('click', () => {
 		console.log('Reserved button works');
@@ -226,6 +227,7 @@ function searchPokemon() {
 		}
 	});
 	/* =============================================== */
+
 	//Main screen btn view
 	goToMainScreenBtn.addEventListener('click', () => {
 		secondScreen.classList.add('hide');
@@ -241,7 +243,6 @@ function searchPokemon() {
 		teamList.innerHTML = '';  
 		
 		//Function to show elements, copy of the created elemets inside displayPokemon function
-		
 		myTeam.forEach((pokemonData, index) => {
 			
 			const teamPokemonCard = document.createElement('div');	
@@ -261,6 +262,7 @@ function searchPokemon() {
 			const pokemonTypes = document.createElement('div');
 			pokemonTypes.className = 'pokemon-types';
 			
+			//Pokemon types
 			pokemonData.types.forEach((typeSlot) => {
 				const type = document.createElement('span');
 				type.textContent = typeSlot.type.name;
@@ -271,14 +273,16 @@ function searchPokemon() {
 			const teamListName = document.createElement('div');
 			teamListName.textContent = pokemonData.customName || pokemonData.name.toUpperCase();
 			teamListName.className = 'pokemon-name';
+
 			/* =============================================== */
-			//Buttons realisation with event listener
+			
 			const editNameButton = document.createElement('button')
 			editNameButton.className = 'edit-btn'
 			const editImage = document.createElement('img')
 			editImage.src = '/img/edit.png'
 			editNameButton.appendChild(editImage)
-			
+
+			//Edit name btn
 			editNameButton.addEventListener('click',() =>{
 				const nickName = prompt('Change name for ' + pokemonData.name)
 				if(nickName) {
@@ -299,6 +303,20 @@ function searchPokemon() {
 			moveRightImage.src = '/img/right.png'
 			moveToRightbtn.appendChild(moveRightImage)
 			
+			//Move left/right btn
+			moveToLeftBtn.addEventListener('click', () => {
+				if (index > 0) {
+					[myTeam[index], myTeam[index - 1]] = [myTeam[index - 1], myTeam[index]];
+					updateTeamList();
+				}
+			});
+			moveToRightbtn.addEventListener('click', () => {
+				if (index < myTeam.length - 1) {
+					[myTeam[index], myTeam[index + 1]] = [myTeam[index + 1], myTeam[index]];
+					updateTeamList();
+				}
+			});
+
 			console.log("Current team size:", myTeam.length);
 			
 			const buttonContainer = document.createElement('div');
@@ -327,6 +345,7 @@ function searchPokemon() {
 			removeImage.src = '/img/Group 2 (1).png'
 			removeButton.appendChild(removeImage)
 			
+			//Remove pokemon btn
 			removeButton.addEventListener('click', () => {
 				delete pokemonData.customName;
 				myTeam.splice(index, 1); 
@@ -346,7 +365,6 @@ function searchPokemon() {
 						myTeam.splice(indexInTeam, 1);
 						updateTeamList(); 
 					}
-					
 					updateReservedList();
 					showPopUpMessage("Pokemon added to reserved!", reserveButton);
 				} else {
@@ -373,7 +391,6 @@ function searchPokemon() {
 			emptySlotCard.className = 'pokemon-list-container empty-slot-card';
 			teamList.appendChild(emptySlotCard);
 		}
-		
 		
 		saveToLocalStorage();
 	}
