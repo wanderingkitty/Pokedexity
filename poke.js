@@ -103,7 +103,7 @@ function searchPokemon() {
 			img.src = detailedPokemon.sprites.other.dream_world.front_default ||
 			detailedPokemon.sprites.other['official-artwork'].front_default ||
 			detailedPokemon.sprites.front_default ||
-			'/img/poketext.png'
+			'img/poketext.png'
 			
 			const pokemonInfo = document.createElement('div'); 
 			pokemonInfo.className = 'pokemon-info';
@@ -294,7 +294,7 @@ function searchPokemon() {
 			const moveToLeftBtn = document.createElement('button')
 			moveToLeftBtn.className = 'move-left-btn'
 			const moveLeftImage = document.createElement('img')
-			moveLeftImage.src = '/img/left.png'
+			moveLeftImage.src = 'img/left.png'
 			moveToLeftBtn.appendChild(moveLeftImage)
 			
 			const moveToRightbtn = document.createElement('button')
