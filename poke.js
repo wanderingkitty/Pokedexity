@@ -64,14 +64,22 @@ function shuffleArray(array) {
 }
 /* =============================================== */
 
-// Function to filter and display Pokemon based on search input
+// Search function
 function searchPokemon() {
 	const filter = searchPokemonInput.value.toUpperCase();
+	
+	
+	if (!filter) {
+		displayPokemon(allPokemonData.slice(0, displayLimit)); 
+		return;
+	}
 	const filteredPokemon = allPokemonData.filter(pokemon => 
 		pokemon.name.toUpperCase().indexOf(filter) > -1
 		);
-		displayPokemon(filteredPokemon);
+		displayPokemon(filteredPokemon.slice(0, displayLimit)); 
 	}
+	searchPokemonInput.addEventListener('input', searchPokemon);
+	
 	/* =============================================== */
 	
 	// Function to display Pokemon
@@ -169,7 +177,7 @@ function searchPokemon() {
 			//Click event to add pokemon to the team
 			addButton.addEventListener('click', () => {
 				if (myTeam.length < maxTeamMembers) { 
-					if (!myTeam.includes(detailedPokemon)) {
+					if (!myTeam.includes(detailedPokemon)){
 						myTeam.push(detailedPokemon);
 						console.log(`Added ${detailedPokemon.name} to the team`);
 						updateTeamList();
@@ -198,20 +206,7 @@ function searchPokemon() {
 			console.log('Error', error.message);
 		}
 	}
-	
-	function debounce(func, delay) {
-		let debounceTimer;
-		return function() {
-			const context = this;
-			const args = arguments;
-			clearTimeout(debounceTimer);
-			debounceTimer = setTimeout(() => func.apply(context, args), delay);
-		}
-	}
 	/* =============================================== */
-	//Search pokemons function
-	searchPokemonInput.addEventListener('input', debounce(searchPokemon, 300));
-	document.addEventListener('DOMContentLoaded', getPokemonDetails);
 	
 	teamScreenBtn.addEventListener('click', () => {
 		firstScreen.classList.add('hide');
@@ -338,19 +333,27 @@ function searchPokemon() {
 				updateTeamList();
 			});
 			
+			//Reserve btn 
 			reserveButton.addEventListener('click', () => {
-				if (!reservedPokemon.includes(pokemonData)) {
+				const isAlreadyReserved = reservedPokemon.some(p => p.name === pokemonData.name);
+				
+				if (!isAlreadyReserved) {
 					reservedPokemon.push(pokemonData);
-					delete pokemonData.customName; 
-					myTeam.splice(index, 1);
-					console.log(`Moved ${pokemonData.name} to reserved list`);
-					updateTeamList(); 
-					updateReservedList(); 
+					console.log(`Added ${pokemonData.name} to reserved`);
+					
+					const indexInTeam = myTeam.findIndex(p => p.name === pokemonData.name);
+					if (indexInTeam !== -1) {
+						myTeam.splice(indexInTeam, 1);
+						updateTeamList(); 
+					}
+					
+					updateReservedList();
+					showPopUpMessage("Pokemon added to reserved!", reserveButton);
 				} else {
-					console.log(`${pokemonData.name} is already in the reserved list`);
+					console.log(`${pokemonData.name} is already in reserved`);
+					showPopUpMessage("Pokemon is already in reserved.", reserveButton);
 				}
 			});
-			
 			
 			/* =============================================== */
 			
@@ -419,14 +422,12 @@ function searchPokemon() {
 			
 			addButton.addEventListener('click', () => {
 				if (myTeam.length < maxTeamMembers) {
-					if (!myTeam.includes(pokemonData, index)) {
+					if (!myTeam.includes(pokemonData)) {
 						myTeam.push(pokemonData);
 						console.log(`Added ${pokemonData.name} to the team`);
-						// Find index in the reserved list
-						const reservedIndex = reservedPokemon.findIndex(p => p === pokemonData);
-						if (reservedIndex !== -1) {
-							reservedPokemon.splice(reservedIndex, 1);
-						}
+						
+						// Remove from reserved if added to team
+						reservedPokemon.splice(index, 1);
 						updateTeamList();
 						updateReservedList();
 						showPopUpMessage("Pokemon added to the team!", addButton);
@@ -475,6 +476,7 @@ function searchPokemon() {
 	
 	//Pop up alert for full team messege
 	function showPopUpMessage(message, nextToElement) {
+		console.log("showPopUpMessage called with message:", message);
 		let popUp = document.querySelector('.pop-up-message');
 		if (!popUp) {
 			popUp = document.createElement('div');

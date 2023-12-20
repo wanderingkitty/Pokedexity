@@ -229,7 +229,7 @@ input {
 	justify-content: center;
 	align-self:center;
 	margin: auto;
-	grid-column: 2;
+	margin-bottom: 2.5em;
 }
 /* =============================================== */
 
