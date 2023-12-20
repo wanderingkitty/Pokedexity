@@ -346,8 +346,8 @@ function searchPokemon() {
 		if (myTeam.length < maxTeamMembers) {
 			console.log("Adding empty slot card");
 			const emptySlotCard = document.createElement('div');
-			emptySlotCard.className = 'empty-slot-card';
-			teamList.appendChild(emptySlotCard);
+			emptySlotCard.className = 'pokemon-list-container empty-slot-card'
+			teamList.appendChild(emptySlotCard); 
 		}
 	
 		saveToLocalStorage();

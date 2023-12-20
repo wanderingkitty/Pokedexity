@@ -212,19 +212,9 @@ input {
 /* =============================================== */
 
 /* Styling elements inside pokemon container */
-.team-container {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
 .team-container > * {
 	display: flex;
 	flex-direction: column;
-	/* display: grid;
-	justify-content: center;
-	align-items: center;
-	grid-template-columns: repeat(3, 1fr); */
-	gap: 10px;
 	color: #D9D9D9;
 	justify-content: center;
 	align-items: center;
