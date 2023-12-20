@@ -107,7 +107,8 @@ input {
 	margin-bottom: 1em;
 	display: flex;
 }
-.team-btn:hover {
+.team-btn:hover,
+.reserved-btn:hover {
 	background-color:#D9D9D9;	
 }
 /* =============================================== */
