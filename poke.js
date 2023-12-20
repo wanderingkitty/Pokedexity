@@ -343,12 +343,14 @@ function searchPokemon() {
 			saveToLocalStorage();
 			
 		});
-		if (myTeam.length < maxTeamMembers) {
-			console.log("Adding empty slot card");
-			const emptySlotCard = document.createElement('div');
-			emptySlotCard.className = 'pokemon-list-container empty-slot-card'
-			teamList.appendChild(emptySlotCard); 
-		}
+		const emptySlotsNeeded = maxTeamMembers - myTeam.length;
+   		 //For loop to create empty slot cards
+		for (let i = 0; i < emptySlotsNeeded; i++) {
+        const emptySlotCard = document.createElement('div');
+        emptySlotCard.className = 'pokemon-list-container empty-slot-card';
+        teamList.appendChild(emptySlotCard);
+    }
+
 	
 		saveToLocalStorage();
 	}
