@@ -292,8 +292,20 @@ function searchPokemon() {
 				}
 			})
 			
+			const moveToLeftBtn = document.createElement('button')
+			moveToLeftBtn.className = 'move-left-btn'
+			const moveLeftImage = document.createElement('img')
+			moveLeftImage.src = '/img/left.png'
+			moveToLeftBtn.appendChild(moveLeftImage)
+			
+			const moveToRightbtn = document.createElement('button')
+			moveToRightbtn.className = 'move-right-btn'
+			const moveRightImage = document.createElement('img')
+			moveRightImage.src = '/img/right.png'
+			moveToRightbtn.appendChild(moveRightImage)
+			
 			console.log("Current team size:", myTeam.length);
-		
+			
 			const buttonContainer = document.createElement('div');
 			buttonContainer.className = 'button-container';
 			
@@ -301,10 +313,18 @@ function searchPokemon() {
 			reserveButton.className = 'reserve-btn';
 			const reserveImage = document.createElement('img');
 			reserveImage.src = '/img/Group 14 (1).png'; 
-			
 			reserveButton.appendChild(reserveImage);
 			buttonContainer.appendChild(reserveButton);
+			
+			const leftRightContainer = document.createElement('div')
+			leftRightContainer.className = 'left-right-btn-container'
+			
+			leftRightContainer.appendChild(moveToLeftBtn); leftRightContainer
+			leftRightContainer.appendChild(moveToRightbtn); leftRightContainer
+			
+			teamPokemonCard.appendChild(buttonContainer); 
 			teamPokemonCard.appendChild(buttonContainer);
+			teamPokemonCard.appendChild(leftRightContainer);
 			
 			const removeButton = document.createElement('button');
 			removeButton.className = 'remove-btn';
@@ -330,8 +350,8 @@ function searchPokemon() {
 					console.log(`${pokemonData.name} is already in the reserved list`);
 				}
 			});
-				
-		
+			
+			
 			/* =============================================== */
 			
 			buttonContainer.appendChild(removeButton); 
@@ -344,14 +364,14 @@ function searchPokemon() {
 			
 		});
 		const emptySlotsNeeded = maxTeamMembers - myTeam.length;
-   		 //For loop to create empty slot cards
+		//For loop to create empty slot cards
 		for (let i = 0; i < emptySlotsNeeded; i++) {
-        const emptySlotCard = document.createElement('div');
-        emptySlotCard.className = 'pokemon-list-container empty-slot-card';
-        teamList.appendChild(emptySlotCard);
-    }
-
-	
+			const emptySlotCard = document.createElement('div');
+			emptySlotCard.className = 'pokemon-list-container empty-slot-card';
+			teamList.appendChild(emptySlotCard);
+		}
+		
+		
 		saveToLocalStorage();
 	}
 	
