@@ -118,13 +118,13 @@ function searchPokemon() {
 			const addButton = document.createElement('button');
 			addButton.className = 'add-btn';
 			const addImage = document.createElement('img');
-			addImage.src = '/img/Group 2 copy.png'; 
+			addImage.src = 'img/Group 2 copy.png'; 
 			addButton.appendChild(addImage);
 			
 			const reserveButton = document.createElement('button');
 			reserveButton.className = 'reserve-btn';
 			const reserveImage = document.createElement('img');
-			reserveImage.src = '/img/Group 14 (1).png';
+			reserveImage.src = 'img/Group 14 (1).png';
 			
 			/* =============================================== */
 			
@@ -256,7 +256,7 @@ function searchPokemon() {
 			img.src = pokemonData.sprites.other.dream_world.front_default ||
 			pokemonData.sprites.other['official-artwork'].front_default ||
 			pokemonData.sprites.front_default ||
-			'/img/poketext.png';
+			'img/poketext.png';
 			img.className = 'pokemon-image'; 
 			
 			const pokemonTypes = document.createElement('div');
@@ -279,7 +279,7 @@ function searchPokemon() {
 			const editNameButton = document.createElement('button')
 			editNameButton.className = 'edit-btn'
 			const editImage = document.createElement('img')
-			editImage.src = '/img/edit.png'
+			editImage.src = 'img/edit.png'
 			editNameButton.appendChild(editImage)
 
 			//Edit name btn
@@ -300,7 +300,7 @@ function searchPokemon() {
 			const moveToRightbtn = document.createElement('button')
 			moveToRightbtn.className = 'move-right-btn'
 			const moveRightImage = document.createElement('img')
-			moveRightImage.src = '/img/right.png'
+			moveRightImage.src = 'img/right.png'
 			moveToRightbtn.appendChild(moveRightImage)
 			
 			//Move left/right btn
@@ -325,7 +325,7 @@ function searchPokemon() {
 			const reserveButton = document.createElement('button');
 			reserveButton.className = 'reserve-btn';
 			const reserveImage = document.createElement('img');
-			reserveImage.src = '/img/Group 14 (1).png'; 
+			reserveImage.src = 'img/Group 14 (1).png'; 
 			reserveButton.appendChild(reserveImage);
 			buttonContainer.appendChild(reserveButton);
 			
@@ -342,7 +342,7 @@ function searchPokemon() {
 			const removeButton = document.createElement('button');
 			removeButton.className = 'remove-btn';
 			const removeImage = document.createElement('img')
-			removeImage.src = '/img/Group 2 (1).png'
+			removeImage.src = 'img/Group 2 (1).png'
 			removeButton.appendChild(removeImage)
 			
 			//Remove pokemon btn
@@ -414,7 +414,7 @@ function searchPokemon() {
 			img.src = pokemonData.sprites.other.dream_world.front_default ||
 			pokemonData.sprites.other['official-artwork'].front_default ||
 			pokemonData.sprites.front_default ||
-			'/img/poketext.png';
+			'img/poketext.png';
 			img.className = 'pokemon-image'; 
 			
 			const pokemonTypes = document.createElement('div');
@@ -434,7 +434,7 @@ function searchPokemon() {
 			const addButton = document.createElement('button');
 			addButton.className = 'add-btn';
 			const addImage = document.createElement('img');
-			addImage.src = '/img/Group 2 copy.png'; 
+			addImage.src = 'img/Group 2 copy.png'; 
 			addButton.appendChild(addImage);
 			
 			addButton.addEventListener('click', () => {
@@ -442,7 +442,7 @@ function searchPokemon() {
 					if (!myTeam.includes(pokemonData)) {
 						myTeam.push(pokemonData);
 						console.log(`Added ${pokemonData.name} to the team`);
-						
+
 						// Remove from reserved if added to team
 						reservedPokemon.splice(index, 1);
 						updateTeamList();
@@ -461,7 +461,7 @@ function searchPokemon() {
 			const removeButton = document.createElement('button');
 			removeButton.className = 'remove-btn';
 			const removeImage = document.createElement('img')
-			removeImage.src = '/img/Group 2 (1).png'
+			removeImage.src = 'img/Group 2 (1).png'
 			removeButton.appendChild(removeImage)
 			
 			removeButton.addEventListener('click', () => {
