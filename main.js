@@ -1,4 +1,5 @@
-import { getPokemon, colors, updateTeamList, updateReservedList } from "./data.js";
+import { getPokemon, colors} from "./data.js";
+import { updateTeamList, updateReservedList } from "./cards.js";
 //Variables 
 export const secondScreen = document.querySelector('#second-screen');
 const pokemonListUrl = 'https://pokeapi.co/api/v2/pokemon?limit=150&offset=0';
@@ -258,7 +259,7 @@ function searchPokemon() {
 	/* =============================================== */
 	
 	//Pop up alert for full team messege
-	function showPopUpMessage(message, nextToElement) {
+	export function showPopUpMessage(message, nextToElement) {
 		console.log("showPopUpMessage called with message:", message);
 		let popUp = document.querySelector('.pop-up-message');
 		if (!popUp) {
