@@ -1,4 +1,4 @@
-import { getPokemon, colors } from "./data.js";
+import { getPokemon, colors} from "./data.js";
 //Variables 
 export const secondScreen = document.querySelector('#second-screen');
 const pokemonListUrl = 'https://pokeapi.co/api/v2/pokemon?limit=150&offset=0';
@@ -228,31 +228,7 @@ function searchPokemon() {
 		firstScreen.classList.add('hide');
 		secondScreen.classList.remove('hide');
 		searchPokemonInput.classList.add('hide')
-	});
-	/* =============================================== */
-	//Reserved team view screen btn
-	reservedPokemonsButton.addEventListener('click', () => {
-		console.log('Reserved button works');
-		firstScreen.classList.add('hide');
-		secondScreen.classList.remove('hide'); 
-		searchPokemonInput.classList.add('hide')
-		const reservedList = document.getElementById('reserved-list');
-		if (reservedList) {
-			reservedList.scrollIntoView({ behavior: 'smooth', block: 'start' });
-		}
-	});
-	/* =============================================== */
-	//Main screen btn view
-	goToMainScreenBtn.addEventListener('click', () => {
-		secondScreen.classList.add('hide');
-		firstScreen.classList.remove('hide');
-		searchPokemonInput.classList.remove('hide')
-		searchPokemonInput.classList.add('show')
-	});
-	/* =============================================== */
-	
-	//Function to get added pokemons on a separate list after adding them
-	function updateTeamList() {
+	});export function updateTeamList() {
 		const teamList = document.querySelector('.team-list');
 		teamList.innerHTML = '';  
 		
@@ -284,7 +260,7 @@ function searchPokemon() {
 				type.className = 'pokemon-type';
 				pokemonTypes.appendChild(type);
 			});
-
+	
 			const teamListName = document.createElement('div');
 			teamListName.textContent = pokemonData.customName || pokemonData.name.toUpperCase();
 			teamListName.className = 'pokemon-name';
@@ -303,7 +279,7 @@ function searchPokemon() {
 					updateTeamList()
 				}
 			})
-
+	
 			const pokemonAbilities = document.createElement('div');
 			pokemonAbilities.className = 'pokemon-abilities';
 	
@@ -383,7 +359,7 @@ function searchPokemon() {
 			teamPokemonCard.appendChild(pokemonAbilities);
 			teamPokemonCard.appendChild(pokemonTypes);
 			teamList.appendChild(teamPokemonCard);
-
+	
 			saveToLocalStorage();
 			
 		});
@@ -402,7 +378,7 @@ function searchPokemon() {
 	/* =============================================== */
 	
 	//Function to list and show reserved pokemons members in a separeted list
-	function updateReservedList() {
+	export function updateReservedList() {
 		const reservedList = document.querySelector('.reserved-list'); 
 		reservedList.innerHTML = '';  
 		
@@ -432,7 +408,7 @@ function searchPokemon() {
 				type.className = 'pokemon-type';
 				pokemonTypes.appendChild(type);
 			});
-
+	
 			const pokemonAbilities = document.createElement('div');
 			pokemonAbilities.className = 'pokemon-abilities';
 	
@@ -498,6 +474,30 @@ function searchPokemon() {
 			
 		});
 	}
+	/* =============================================== */
+	//Reserved team view screen btn
+	reservedPokemonsButton.addEventListener('click', () => {
+		console.log('Reserved button works');
+		firstScreen.classList.add('hide');
+		secondScreen.classList.remove('hide'); 
+		searchPokemonInput.classList.add('hide')
+		const reservedList = document.getElementById('reserved-list');
+		if (reservedList) {
+			reservedList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		}
+	});
+	/* =============================================== */
+	//Main screen btn view
+	goToMainScreenBtn.addEventListener('click', () => {
+		secondScreen.classList.add('hide');
+		firstScreen.classList.remove('hide');
+		searchPokemonInput.classList.remove('hide')
+		searchPokemonInput.classList.add('show')
+	});
+	/* =============================================== */
+	
+	//Function to get added pokemons on a separate list after adding them
+	
 	//Loading local storage data
 	document.addEventListener('DOMContentLoaded', () => {
 		loadFromLocalStorage();
