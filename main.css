@@ -142,7 +142,7 @@ input {
 	align-self: center;
 	transition: opacity 0.3s ease;
 	position: relative;
-	top: 3em;
+	top: 4em;
 }
 .pokemon-list-container:hover {
 	transform: translateY(-5px); 
