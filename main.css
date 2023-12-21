@@ -31,16 +31,13 @@ h2 {
 	margin-bottom: 1em;
 }
 hr {
-	width: 60vw;
-	margin: 20px auto;
-	display: block;
-	/* background-color:#D9D9D9; */
-	height: 2px;
-	border: none;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-	background-image: linear-gradient(to right, transparent, rgba(255,255,255,0.8), transparent);
-	background-size: 200% auto;
-	animation: shine 2s linear infinite;
+    width: 60vw;
+    margin: 20px auto;
+    display: block;
+    height: 2px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    animation: neonBlinkHr 1.5s ease-in-out infinite;
 }
 input {
 	border-radius: 100px;
@@ -68,11 +65,18 @@ input {
 		text-shadow: 0 0 20px #dd6eff, 0 0 30px #e46eff; 
 	}
 }
-@keyframes shine {
-	to {
-		background-position: 200% center;
-	}
+@keyframes neonBlinkHr {
+    0%, 100% {
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.8); 
+    }
+    50% {
+        background-color: rgba(209, 110, 255, 0.8); 
+        box-shadow: 0 0 20px rgba(209, 110, 255, 0.8), 0 0 30px rgba(228, 110, 255, 0.8); 
+    }
 }
+
+
 /* =============================================== */
 /* Top elements styling */
 .logo img {
@@ -118,14 +122,14 @@ input {
 	background-color: #972929; 
 	color:#D9D9D9;
 	border-radius: 14px;
-	width: 280px;
-	height: 290px;
+	height: 350px;
+	width: 300px;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
 	margin: auto;
 	align-items: center;
-	padding: 0.5em;
+	padding: 1em;
 	font-size: 1.1em;
 	font-weight: 700;
 	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -138,7 +142,7 @@ input {
 	align-self: center;
 	transition: opacity 0.3s ease;
 	position: relative;
-	top: 4em;
+	top: 3em;
 }
 .pokemon-list-container:hover {
 	transform: translateY(-5px); 
@@ -146,11 +150,12 @@ input {
 	box-shadow: 0px 0px 30px rgba(73, 73, 73, 0.9);
 	background-image:url(img/backgroundball.jpg);
 	background-color:#2e2e2e;
-	background-size: 100%;
+	background-size: cover; 
 	background-repeat: no-repeat; 
 	background-position: center;
 	position: relative;
 	display: flex;
+	height: 350px;
 	align-items: center; 	
 	justify-content: center;
 }
@@ -333,8 +338,26 @@ input {
 .pokemon-types {
 	display: flex;
 	margin: 0.3em; 
+	margin-bottom: 1em;
 	font-size: 0.9em;
+	justify-content: center;
+	align-items: center;
 }
+/* =============================================== */
+/* Pokemon abilities */
+.pokemon-abilities{
+	position: relative;
+	top: 2.5em;
+	text-align: center;
+	margin-bottom: 0.5em;
+	margin-top: 1em;
+	background-color:#D9D9D9;
+	color:#2e2e2e;
+	border-radius:14px;
+	padding: 0.5em;
+	word-wrap: break-word; 
+}
+
 /* =============================================== */
 
 /* Styling for pokeon, after its search so its centered */

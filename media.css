@@ -31,8 +31,8 @@
 @media screen and (min-width: 900px) {
 	
 	.pokemon-list-container {
-		height: 290px;
-
+		/* height: 290px; */
+		height: 350px;
 
 		display: flex;
 		flex-direction: column;
