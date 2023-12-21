@@ -119,13 +119,13 @@ function searchPokemon() {
 			if (detailedPokemon.abilities && detailedPokemon.abilities.length > 0) {
 				const mainAbility = detailedPokemon.abilities[0].ability;
 				const mainAbilityFirstWord = mainAbility.name.split(' ')[0];
-		
+				
 				const abilityName = document.createElement('span');
 				abilityName.textContent = mainAbilityFirstWord;
 				abilityName.className = 'pokemon-ability'; 
 				pokemonAbilities.appendChild(abilityName);
 			}
-	
+			
 			pokemonInfo.appendChild(pokemonAbilities);
 			
 			const buttonContainer = document.createElement('div');
@@ -287,6 +287,17 @@ function searchPokemon() {
 			const teamListName = document.createElement('div');
 			teamListName.textContent = pokemonData.customName || pokemonData.name.toUpperCase();
 			teamListName.className = 'pokemon-name';
+			
+			const pokemonAbilities = document.createElement('div');
+			pokemonAbilities.className = 'pokemon-abilities';
+			pokemonData.abilities.forEach(ability => {
+				const abilityName = document.createElement('span');
+				abilityName.textContent = ability.ability.name;
+				abilityName.className = 'pokemon-ability';
+				pokemonAbilities.appendChild(abilityName);
+			});
+			
+			// Add abilities to the card
 			/* =============================================== */
 			//Buttons realisation with event listener
 			const editNameButton = document.createElement('button')
@@ -328,6 +339,8 @@ function searchPokemon() {
 					updateTeamList();
 				}
 			});
+			
+			
 			console.log("Current team size:", myTeam.length);
 			
 			const buttonContainer = document.createElement('div');
@@ -381,6 +394,7 @@ function searchPokemon() {
 			buttonContainer.appendChild(editNameButton)
 			teamPokemonCard.appendChild(img);
 			teamPokemonCard.appendChild(teamListName);
+			teamPokemonCard.appendChild(pokemonAbilities);
 			teamPokemonCard.appendChild(pokemonTypes);
 			teamList.appendChild(teamPokemonCard);
 			saveToLocalStorage();
@@ -471,7 +485,16 @@ function searchPokemon() {
 				reservedPokemon.splice(index, 1); 
 				updateReservedList();
 			});
-			
+			const pokemonAbilities = document.createElement('div');
+			pokemonAbilities.className = 'pokemon-abilities';
+			pokemonData.abilities.forEach(ability => {
+				const abilityName = document.createElement('span');
+				abilityName.textContent = ability.ability.name;
+				abilityName.className = 'pokemon-ability';
+				pokemonAbilities.appendChild(abilityName);
+			});
+		
+			// Add abilities to the card
 			updateTeamList();
 			
 			teamPokemonCard.appendChild(buttonContainer);
@@ -479,6 +502,7 @@ function searchPokemon() {
 			buttonContainer.appendChild(addButton);
 			teamPokemonCard.appendChild(img);
 			teamPokemonCard.appendChild(teamPokemonName);
+			teamPokemonCard.appendChild(pokemonAbilities);
 			teamPokemonCard.appendChild(pokemonTypes);
 			reservedList.appendChild(teamPokemonCard);
 			saveToLocalStorage();
