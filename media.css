@@ -2,7 +2,7 @@
 @media screen and (min-width: 300px) {
 	
 	.pokemon-list-container {
-		height: 290px;
+		height: 350px;
 		display: flex;
 		flex-direction: column;
 		align-items:center;

@@ -111,7 +111,7 @@ function searchPokemon() {
 			const pokemonName = document.createElement('div');
 			pokemonName.textContent = detailedPokemon.name.toUpperCase();
 			pokemonName.className = 'pokemon-name'
-			
+
 			//Pokemon abilities
 			const pokemonAbilities = document.createElement('div');
 			pokemonAbilities.className = 'pokemon-abilities';
@@ -284,6 +284,7 @@ function searchPokemon() {
 				type.className = 'pokemon-type';
 				pokemonTypes.appendChild(type);
 			});
+
 			const teamListName = document.createElement('div');
 			teamListName.textContent = pokemonData.customName || pokemonData.name.toUpperCase();
 			teamListName.className = 'pokemon-name';
@@ -302,6 +303,17 @@ function searchPokemon() {
 					updateTeamList()
 				}
 			})
+
+			const pokemonAbilities = document.createElement('div');
+			pokemonAbilities.className = 'pokemon-abilities';
+	
+			pokemonData.abilities.forEach((ability) => {
+				const abilityName = document.createElement('span');
+				abilityName.textContent = ability.ability.name; // Display full ability name
+				abilityName.className = 'pokemon-ability';
+				pokemonAbilities.appendChild(abilityName);
+			});
+	
 			
 			const moveToLeftBtn = document.createElement('button')
 			moveToLeftBtn.className = 'move-left-btn'
@@ -368,8 +380,10 @@ function searchPokemon() {
 			buttonContainer.appendChild(editNameButton)
 			teamPokemonCard.appendChild(img);
 			teamPokemonCard.appendChild(teamListName);
+			teamPokemonCard.appendChild(pokemonAbilities);
 			teamPokemonCard.appendChild(pokemonTypes);
 			teamList.appendChild(teamPokemonCard);
+
 			saveToLocalStorage();
 			
 		});
@@ -418,6 +432,17 @@ function searchPokemon() {
 				type.className = 'pokemon-type';
 				pokemonTypes.appendChild(type);
 			});
+
+			const pokemonAbilities = document.createElement('div');
+			pokemonAbilities.className = 'pokemon-abilities';
+	
+			pokemonData.abilities.forEach((ability) => {
+				const abilityName = document.createElement('span');
+				abilityName.textContent = ability.ability.name; // Display full ability name
+				abilityName.className = 'pokemon-ability';
+				pokemonAbilities.appendChild(abilityName);
+			});
+	
 			const buttonContainer = document.createElement('div');
 			buttonContainer.className = 'button-container';
 			
@@ -466,6 +491,7 @@ function searchPokemon() {
 			buttonContainer.appendChild(addButton);
 			teamPokemonCard.appendChild(img);
 			teamPokemonCard.appendChild(teamPokemonName);
+			teamPokemonCard.appendChild(pokemonAbilities);
 			teamPokemonCard.appendChild(pokemonTypes);
 			reservedList.appendChild(teamPokemonCard);
 			saveToLocalStorage();
