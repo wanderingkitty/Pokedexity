@@ -64,18 +64,23 @@ function shuffleArray(array) {
 
 // Search function
 function searchPokemon() {
-	const filter = searchPokemonInput.value.toUpperCase();
-	
-	if (!filter) {
-		displayPokemon(allPokemonData.slice(0, displayLimit)); 
-		return;
-	}
-	const filteredPokemon = allPokemonData.filter(pokemon => 
-		pokemon.name.toUpperCase().indexOf(filter) > -1
-		);
-		displayPokemon(filteredPokemon.slice(0, displayLimit)); 
-	}
-	searchPokemonInput.addEventListener('input', searchPokemon);
+    const filter = searchPokemonInput.value.toUpperCase();
+    let displayedPokemon = []; 
+
+    if (!filter) {
+        displayedPokemon = allPokemonData.slice(0, displayLimit);
+    } else {
+        allPokemonData.forEach(pokemon => {
+            if (pokemon.name.toUpperCase().indexOf(filter) > -1) {
+                if (!displayedPokemon.includes(pokemon)) { 
+                    displayedPokemon.push(pokemon);
+                }
+            }
+        });
+    }
+    displayPokemon(displayedPokemon.slice(0, displayLimit));
+}
+
 	
 	/* =============================================== */
 	
