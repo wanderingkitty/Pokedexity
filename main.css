@@ -119,8 +119,9 @@ input {
 
 /* Main pokemon section styling, visualize pokemons */
 .pokemon-list-container  {
-	background-color: #972929; 
-	color:#D9D9D9;
+	background-color: #FFDC5E;
+	/* color:#D9D9D9; */
+	color:#2e2e2e;
 	border-radius: 14px;
 	height: 350px;
 	width: 300px;
