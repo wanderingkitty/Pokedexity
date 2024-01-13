@@ -14,7 +14,7 @@ export let allPokemonData = [];
 export  const myTeam = []
 export const reservedPokemon = []
 export const maxTeamMembers = 3
-
+export let pokemonUniqueId = 0
 /* =============================================== */
 
 // Function to hide second view screen
@@ -89,6 +89,8 @@ function searchPokemon() {
 			const pokemonData = await fetch(pokemon.url);
 			const detailedPokemon = await pokemonData.json();
 			
+			detailedPokemon.id = ++pokemonUniqueId;
+
 			const pokemonCard = document.createElement('div');
 			pokemonCard.className = 'pokemon-list-container';
 			
@@ -189,8 +191,8 @@ function searchPokemon() {
 			//Click event to add pokemon to the team
 			addButton.addEventListener('click', () => {
 				if (myTeam.length < maxTeamMembers) { 
-					
-						myTeam.push(detailedPokemon);
+					const newPokemon = { ...detailedPokemon, id: ++pokemonUniqueId };
+					myTeam.push(newPokemon);
 						console.log(`Added ${detailedPokemon.name} to the team`);
 						updateTeamList();
 						showPopUpMessage("Pokemon added to the team!", addButton);

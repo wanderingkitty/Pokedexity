@@ -1,4 +1,4 @@
-import { myTeam, maxTeamMembers, saveToLocalStorage, reservedPokemon, showPopUpMessage } from "./main.js"
+import { myTeam, maxTeamMembers, saveToLocalStorage, reservedPokemon, showPopUpMessage,pokemonUniqueId } from "./main.js"
 import { getPokemon, colors} from "./data.js";
 
 //Function to get added pokemons on a separate list after adding them
@@ -7,7 +7,7 @@ export function updateTeamList() {
 	teamList.innerHTML = '';  
 	
 	//Function to show elements, copy of the created elemets inside displayPokemon function
-	
+
 	myTeam.forEach((pokemonData, index) => {
 		
 		const teamPokemonCard = document.createElement('div');	
@@ -73,12 +73,16 @@ export function updateTeamList() {
 			input.focus();
 			input.select();
 		
-		    const submitChange = () => {
+			const submitChange = () => {
 				if (input.value.trim() !== '') {
-					pokemonData.customName = input.value.trim();
+					const pokemonToUpdate = myTeam.find(p => p.id === pokemonData.id);
+					if (pokemonToUpdate) {
+						pokemonToUpdate.customName = input.value.trim();
+					}
 				}
 				updateTeamList();
 			};
+			
 				
 			input.addEventListener('keypress', (event) => {
 				if (event.key === 'Enter') {
@@ -150,7 +154,7 @@ export function updateTeamList() {
 		
 		reserveButton.addEventListener('click', () => {
 			if (!reservedPokemon.includes(pokemonData)){
-				reservedPokemon.push(pokemonData);
+				reservedPokemon.push(pokemonData );
 				delete pokemonData.customName; 
 				myTeam.splice(index, 1);
 				console.log(`Moved ${pokemonData.name} to reserved list`);
@@ -229,7 +233,7 @@ export function updateReservedList() {
 		
 		addButton.addEventListener('click', () => {
 			if (myTeam.length < maxTeamMembers) {
-					myTeam.push(pokemonData);
+				myTeam.push({ ...detailedPokemon, id: ++pokemonUniqueId });
 					console.log(`Added ${pokemonData.name} to the team`);
 					// Remove from reserved if added to team
 					reservedPokemon.splice(index, 1);
