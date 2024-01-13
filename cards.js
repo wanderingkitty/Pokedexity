@@ -60,7 +60,6 @@ export function updateTeamList() {
 			if (document.querySelector('.edit-name-input')) {
 				return;
 			}
-		
 			const input = document.createElement('input');
 			input.type = 'text';
 			input.className = 'edit-name-input';
@@ -74,15 +73,13 @@ export function updateTeamList() {
 			input.focus();
 			input.select();
 		
-			const submitChange = () => {
+		    const submitChange = () => {
 				if (input.value.trim() !== '') {
 					pokemonData.customName = input.value.trim();
 				}
 				updateTeamList();
 			};
-		
-			input.addEventListener('blur', submitChange);
-		
+				
 			input.addEventListener('keypress', (event) => {
 				if (event.key === 'Enter') {
 					submitChange();
@@ -90,8 +87,6 @@ export function updateTeamList() {
 				}
 			});
 		});
-		
-		
 		
 		const moveToLeftBtn = document.createElement('button')
 		moveToLeftBtn.className = 'move-left-btn'
@@ -118,7 +113,6 @@ export function updateTeamList() {
 				updateTeamList();
 			}
 		});
-		
 		
 		console.log("Current team size:", myTeam.length);
 		
