@@ -215,10 +215,7 @@ export function updateReservedList() {
 					updateTeamList();
 					updateReservedList();
 					showPopUpMessage("Pokemon added to the team!", addButton);
-				} else {
-					console.log(`${pokemonData.name} is already in the team`);
-					showPopUpMessage("Pokemon is already in the team.", addButton);
-				}
+				} 
 			} else {
 				console.log('Cannot add more members. Team is full.');
 				showPopUpMessage("Cannot add more members. Team is full.", addButton);
