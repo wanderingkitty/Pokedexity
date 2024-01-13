@@ -56,13 +56,42 @@ export function updateTeamList() {
 		editImage.src = 'img/edit.png'
 		editNameButton.appendChild(editImage)
 		
-		editNameButton.addEventListener('click',() =>{
-			const nickName = prompt('Change name for ' + pokemonData.name)
-			if(nickName) {
-				pokemonData.customName = nickName
-				updateTeamList()
+		editNameButton.addEventListener('click', () => {
+			if (document.querySelector('.edit-name-input')) {
+				return;
 			}
-		})
+		
+			const input = document.createElement('input');
+			input.type = 'text';
+			input.className = 'edit-name-input';
+			input.value = pokemonData.customName || pokemonData.name;
+			input.style.width = '200px'; 
+		
+			const parentElement = editNameButton.parentElement;
+		
+			parentElement.replaceChild(input, editNameButton);
+		
+			input.focus();
+			input.select();
+		
+			const submitChange = () => {
+				if (input.value.trim() !== '') {
+					pokemonData.customName = input.value.trim();
+				}
+				updateTeamList();
+			};
+		
+			input.addEventListener('blur', submitChange);
+		
+			input.addEventListener('keypress', (event) => {
+				if (event.key === 'Enter') {
+					submitChange();
+					input.blur(); 
+				}
+			});
+		});
+		
+		
 		
 		const moveToLeftBtn = document.createElement('button')
 		moveToLeftBtn.className = 'move-left-btn'
@@ -206,16 +235,14 @@ export function updateReservedList() {
 		
 		addButton.addEventListener('click', () => {
 			if (myTeam.length < maxTeamMembers) {
-				if (!myTeam.includes(pokemonData)) {
 					myTeam.push(pokemonData);
 					console.log(`Added ${pokemonData.name} to the team`);
-					
 					// Remove from reserved if added to team
 					reservedPokemon.splice(index, 1);
 					updateTeamList();
 					updateReservedList();
 					showPopUpMessage("Pokemon added to the team!", addButton);
-				} 
+				
 			} else {
 				console.log('Cannot add more members. Team is full.');
 				showPopUpMessage("Cannot add more members. Team is full.", addButton);

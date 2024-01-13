@@ -189,9 +189,12 @@ function searchPokemon() {
 			//Click event to add pokemon to the team
 			addButton.addEventListener('click', () => {
 				if (myTeam.length < maxTeamMembers) { 
+					
+						myTeam.push(detailedPokemon);
+						console.log(`Added ${detailedPokemon.name} to the team`);
 						updateTeamList();
 						showPopUpMessage("Pokemon added to the team!", addButton);
-					} 
+					}
 				 else {
 					console.log('Cannot add more members. Team is full.');
 					showPopUpMessage("Cannot add more members. Team is full.", addButton); 
