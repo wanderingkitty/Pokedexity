@@ -7,7 +7,7 @@ export function updateTeamList() {
 	teamList.innerHTML = '';  
 	
 	//Function to show elements, copy of the created elemets inside displayPokemon function
-
+	
 	myTeam.forEach((pokemonData, index) => {
 		
 		const teamPokemonCard = document.createElement('div');	
@@ -65,14 +65,14 @@ export function updateTeamList() {
 			input.className = 'edit-name-input';
 			input.value = pokemonData.customName || pokemonData.name;
 			input.style.width = '200px'; 
-		
+			
 			const parentElement = editNameButton.parentElement;
-		
+			
 			parentElement.replaceChild(input, editNameButton);
-		
+			
 			input.focus();
 			input.select();
-		
+			
 			const submitChange = () => {
 				if (input.value.trim() !== '') {
 					const pokemonToUpdate = myTeam.find(p => p.id === pokemonData.id);
@@ -83,7 +83,7 @@ export function updateTeamList() {
 				updateTeamList();
 			};
 			
-				
+			
 			input.addEventListener('keypress', (event) => {
 				if (event.key === 'Enter') {
 					submitChange();
@@ -233,13 +233,13 @@ export function updateReservedList() {
 		
 		addButton.addEventListener('click', () => {
 			if (myTeam.length < maxTeamMembers) {
-				myTeam.push({ ...detailedPokemon, id: ++pokemonUniqueId });
-					console.log(`Added ${pokemonData.name} to the team`);
-					// Remove from reserved if added to team
-					reservedPokemon.splice(index, 1);
-					updateTeamList();
-					updateReservedList();
-					showPopUpMessage("Pokemon added to the team!", addButton);
+				myTeam.push(pokemonData);  
+				console.log(`Added ${pokemonData.name} to the team`);
+				// Remove from reserved if added to team
+				reservedPokemon.splice(index, 1);
+				updateTeamList();
+				updateReservedList();
+				showPopUpMessage("Pokemon added to the team!", addButton);
 				
 			} else {
 				console.log('Cannot add more members. Team is full.');
